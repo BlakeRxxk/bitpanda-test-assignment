@@ -19,6 +19,7 @@
 		AABF2E46280DE4A50098D404 /* AssetsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF2E45280DE4A50098D404 /* AssetsCoordinator.swift */; };
 		AABF2E48280DE6A50098D404 /* WalletsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF2E47280DE6A50098D404 /* WalletsCoordinator.swift */; };
 		AABF2E4B280DF3610098D404 /* BitPandaCore in Frameworks */ = {isa = PBXBuildFile; productRef = AABF2E4A280DF3610098D404 /* BitPandaCore */; };
+		AABF2E4E280DF7470098D404 /* BitPandaUI in Frameworks */ = {isa = PBXBuildFile; productRef = AABF2E4D280DF7470098D404 /* BitPandaUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		AABF2E45280DE4A50098D404 /* AssetsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsCoordinator.swift; sourceTree = "<group>"; };
 		AABF2E47280DE6A50098D404 /* WalletsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCoordinator.swift; sourceTree = "<group>"; };
 		AABF2E49280DF3060098D404 /* BitPandaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BitPandaCore; sourceTree = "<group>"; };
+		AABF2E4C280DF6800098D404 /* BitPandaUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BitPandaUI; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AABF2E4B280DF3610098D404 /* BitPandaCore in Frameworks */,
+				AABF2E4E280DF7470098D404 /* BitPandaUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +147,7 @@
 		AABF2E3F280DE19B0098D404 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				AABF2E4C280DF6800098D404 /* BitPandaUI */,
 				AABF2E49280DF3060098D404 /* BitPandaCore */,
 			);
 			path = Modules;
@@ -203,6 +207,7 @@
 			name = BitPanda;
 			packageProductDependencies = (
 				AABF2E4A280DF3610098D404 /* BitPandaCore */,
+				AABF2E4D280DF7470098D404 /* BitPandaUI */,
 			);
 			productName = BitPanda;
 			productReference = AA62658E28060D21004D7897 /* BitPanda.app */;
@@ -654,6 +659,10 @@
 		AABF2E4A280DF3610098D404 /* BitPandaCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BitPandaCore;
+		};
+		AABF2E4D280DF7470098D404 /* BitPandaUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BitPandaUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,6 +1,6 @@
 //
-//  File.swift
-//
+//  Navigator.swift
+//  BitPandaCore
 //
 //  Created by Олег Кургаев on 18.04.2022.
 //

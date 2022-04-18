@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA17569B280DFD6500904BAA /* Mastrerdata.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Mastrerdata.json; sourceTree = "<group>"; };
 		AA62658E28060D21004D7897 /* BitPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA62659128060D21004D7897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA62659A28060D21004D7897 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -183,6 +184,7 @@
 		AABF2E44280DE4850098D404 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AA17569B280DFD6500904BAA /* Mastrerdata.json */,
 				AA62659A28060D21004D7897 /* Assets.xcassets */,
 				AA62659C28060D21004D7897 /* LaunchScreen.storyboard */,
 			);

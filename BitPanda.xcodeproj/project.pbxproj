@@ -13,7 +13,12 @@
 		AA6265A928060D22004D7897 /* BitPandaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6265A828060D22004D7897 /* BitPandaTests.swift */; };
 		AA6265B328060D22004D7897 /* BitPandaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6265B228060D22004D7897 /* BitPandaUITests.swift */; };
 		AA6265B528060D22004D7897 /* BitPandaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6265B428060D22004D7897 /* BitPandaUITestsLaunchTests.swift */; };
-		AABF2E2F280DDD980098D404 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF2E2E280DDD980098D404 /* ViewController.swift */; };
+		AABF2E34280DDE740098D404 /* WalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF2E30280DDE740098D404 /* WalletsViewController.swift */; };
+		AABF2E35280DDE740098D404 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF2E31280DDE740098D404 /* AppCoordinator.swift */; };
+		AABF2E36280DDE740098D404 /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF2E32280DDE740098D404 /* AssetViewController.swift */; };
+		AABF2E46280DE4A50098D404 /* AssetsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF2E45280DE4A50098D404 /* AssetsCoordinator.swift */; };
+		AABF2E48280DE6A50098D404 /* WalletsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF2E47280DE6A50098D404 /* WalletsCoordinator.swift */; };
+		AABF2E4B280DF3610098D404 /* BitPandaCore in Frameworks */ = {isa = PBXBuildFile; productRef = AABF2E4A280DF3610098D404 /* BitPandaCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +49,12 @@
 		AA6265AE28060D22004D7897 /* BitPandaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitPandaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6265B228060D22004D7897 /* BitPandaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitPandaUITests.swift; sourceTree = "<group>"; };
 		AA6265B428060D22004D7897 /* BitPandaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitPandaUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AABF2E2E280DDD980098D404 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AABF2E30280DDE740098D404 /* WalletsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletsViewController.swift; sourceTree = "<group>"; };
+		AABF2E31280DDE740098D404 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		AABF2E32280DDE740098D404 /* AssetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; };
+		AABF2E45280DE4A50098D404 /* AssetsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsCoordinator.swift; sourceTree = "<group>"; };
+		AABF2E47280DE6A50098D404 /* WalletsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCoordinator.swift; sourceTree = "<group>"; };
+		AABF2E49280DF3060098D404 /* BitPandaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BitPandaCore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABF2E4B280DF3610098D404 /* BitPandaCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,10 +86,12 @@
 		AA62658528060D21004D7897 = {
 			isa = PBXGroup;
 			children = (
+				AABF2E3F280DE19B0098D404 /* Modules */,
 				AA62659028060D21004D7897 /* BitPanda */,
 				AA6265A728060D22004D7897 /* BitPandaTests */,
 				AA6265B128060D22004D7897 /* BitPandaUITests */,
 				AA62658F28060D21004D7897 /* Products */,
+				AABF2E39280DE0F70098D404 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,11 +108,11 @@
 		AA62659028060D21004D7897 /* BitPanda */ = {
 			isa = PBXGroup;
 			children = (
-				AA62659128060D21004D7897 /* AppDelegate.swift */,
-				AA62659A28060D21004D7897 /* Assets.xcassets */,
-				AA62659C28060D21004D7897 /* LaunchScreen.storyboard */,
+				AABF2E43280DE45C0098D404 /* AppStart */,
+				AABF2E42280DE43B0098D404 /* Assets */,
+				AABF2E41280DE4350098D404 /* Wallets */,
+				AABF2E44280DE4850098D404 /* Resources */,
 				AA62659F28060D21004D7897 /* Info.plist */,
-				AABF2E2E280DDD980098D404 /* ViewController.swift */,
 			);
 			path = BitPanda;
 			sourceTree = "<group>";
@@ -121,6 +134,57 @@
 			path = BitPandaUITests;
 			sourceTree = "<group>";
 		};
+		AABF2E39280DE0F70098D404 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AABF2E3F280DE19B0098D404 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				AABF2E49280DF3060098D404 /* BitPandaCore */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		AABF2E41280DE4350098D404 /* Wallets */ = {
+			isa = PBXGroup;
+			children = (
+				AABF2E30280DDE740098D404 /* WalletsViewController.swift */,
+				AABF2E47280DE6A50098D404 /* WalletsCoordinator.swift */,
+			);
+			path = Wallets;
+			sourceTree = "<group>";
+		};
+		AABF2E42280DE43B0098D404 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				AABF2E32280DDE740098D404 /* AssetViewController.swift */,
+				AABF2E45280DE4A50098D404 /* AssetsCoordinator.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		AABF2E43280DE45C0098D404 /* AppStart */ = {
+			isa = PBXGroup;
+			children = (
+				AA62659128060D21004D7897 /* AppDelegate.swift */,
+				AABF2E31280DDE740098D404 /* AppCoordinator.swift */,
+			);
+			path = AppStart;
+			sourceTree = "<group>";
+		};
+		AABF2E44280DE4850098D404 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA62659A28060D21004D7897 /* Assets.xcassets */,
+				AA62659C28060D21004D7897 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +201,9 @@
 			dependencies = (
 			);
 			name = BitPanda;
+			packageProductDependencies = (
+				AABF2E4A280DF3610098D404 /* BitPandaCore */,
+			);
 			productName = BitPanda;
 			productReference = AA62658E28060D21004D7897 /* BitPanda.app */;
 			productType = "com.apple.product-type.application";
@@ -251,8 +318,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AABF2E2F280DDD980098D404 /* ViewController.swift in Sources */,
+				AABF2E35280DDE740098D404 /* AppCoordinator.swift in Sources */,
+				AABF2E46280DE4A50098D404 /* AssetsCoordinator.swift in Sources */,
 				AA62659228060D21004D7897 /* AppDelegate.swift in Sources */,
+				AABF2E34280DDE740098D404 /* WalletsViewController.swift in Sources */,
+				AABF2E36280DDE740098D404 /* AssetViewController.swift in Sources */,
+				AABF2E48280DE6A50098D404 /* WalletsCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +649,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AABF2E4A280DF3610098D404 /* BitPandaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BitPandaCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA62658628060D21004D7897 /* Project object */;
 }

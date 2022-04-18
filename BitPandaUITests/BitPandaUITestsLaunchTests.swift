@@ -2,7 +2,7 @@
 //  BitPandaUITestsLaunchTests.swift
 //  BitPandaUITests
 //
-//  Created by Олег Кургаев on 12.04.2022.
+//  Created by Oleg Kurgaev on 12.04.2022.
 //
 
 import XCTest

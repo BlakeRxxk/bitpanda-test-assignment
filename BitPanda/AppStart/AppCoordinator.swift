@@ -12,7 +12,8 @@ final class AppCoordinator: PresentationCoordinator {
 
     // MARK: Lifecycle
 
-    init(in window: UIWindow) {
+    init(in window: UIWindow, with container: DependencyContainer) {
+        self.container = container
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }
@@ -20,13 +21,12 @@ final class AppCoordinator: PresentationCoordinator {
     // MARK: Internal
 
     var identifier: String = UUID().uuidString
-
+    var container: DependencyContainer
     var childCoordinators: [String: Coordinator] = [:]
     var rootViewController = UITabBarController()
 
-
     func start() {
-        let assetsCoordinator = AssetsCoordinator()
+        let assetsCoordinator = container.makeAssetsCoordinator()
         let walletsCoordinator = WalletsCoordinator()
 
         walletsCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "assets", image: nil, tag: 0)
@@ -34,7 +34,7 @@ final class AppCoordinator: PresentationCoordinator {
 
         rootViewController.setViewControllers([
             walletsCoordinator.rootViewController,
-            assetsCoordinator.rootViewController,
+            assetsCoordinator.rootViewController
         ], animated: false)
     }
 

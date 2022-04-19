@@ -11,20 +11,26 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  var appCoordinator: AppCoordinator?
-  var window: UIWindow?
+    // MARK: Internal
 
-  func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    var appCoordinator: AppCoordinator?
+    var window: UIWindow?
 
-    window = UIWindow()
-    guard let window = window else { return false }
+    func application(_: UIApplication,
+                     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-    appCoordinator = AppCoordinator(in: window)
-    appCoordinator?.start()
+        window = UIWindow()
+        guard let window = window else { return false }
 
-    return true
-  }
-    
+        let providerFactories = DependencyContainer()
+        appCoordinator = AppCoordinator(in: window, with: providerFactories)
+        appCoordinator?.start()
+
+        return true
+    }
+
+    // MARK: Private
+
     private func setupAppearance() {
         // place for apperance
     }

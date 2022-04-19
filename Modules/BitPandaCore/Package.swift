@@ -5,11 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "BitPandaCore",
+    platforms: [.iOS(.v13)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "BitPandaCore",
-            targets: ["BitPandaCore"]),
+            targets: ["BitPandaCore"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,6 +24,5 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "BitPandaCoreTests",
-            dependencies: ["BitPandaCore"]),
-    ]
-)
+            dependencies: ["BitPandaCore"])
+    ])

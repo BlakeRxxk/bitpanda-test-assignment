@@ -34,7 +34,7 @@ final class AppCoordinator: PresentationCoordinator {
 
         rootViewController.setViewControllers([
             walletsCoordinator.rootViewController,
-            assetsCoordinator.rootViewController
+            assetsCoordinator.rootViewController,
         ], animated: false)
     }
 

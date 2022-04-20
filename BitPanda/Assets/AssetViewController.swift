@@ -48,9 +48,10 @@ class AssetViewController: ViewController<AssetView> {
             collectionView: specializedView.collectionView!,
             cellProvider: { collectionView, indexPath, contact -> AssetRowCell? in
 
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: AssetRowCell.reuseIdentifier,
-                    for: indexPath) as? AssetRowCell else { return nil }
+                guard
+                    let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: AssetRowCell.reuseIdentifier,
+                        for: indexPath) as? AssetRowCell else { return nil }
                 cell.model = contact
                 return cell
             })

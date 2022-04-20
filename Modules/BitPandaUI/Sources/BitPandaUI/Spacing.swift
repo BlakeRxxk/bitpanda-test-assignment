@@ -7,6 +7,9 @@
 
 import UIKit
 
+// MARK: - Spacing
+
+// swiftlint:disable identifier_name
 public enum Spacing {
     public static let x4: CGFloat = 4
     public static let x8: CGFloat = 8
@@ -21,6 +24,8 @@ public enum Spacing {
     public static let x72: CGFloat = 72
     public static let x80: CGFloat = 80
 }
+
+// MARK: - CornerRadius
 
 public enum CornerRadius {
     public static let x2: CGFloat = 2

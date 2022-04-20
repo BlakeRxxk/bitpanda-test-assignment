@@ -1,5 +1,6 @@
 only_rules:
   - colon
+  - identifier_name
   - fatal_error_message
   - implicitly_unwrapped_optional
   - legacy_cggeometry_functions
@@ -22,6 +23,10 @@ colon:
   apply_to_dictionaries: false
 
 indentation: 4
+
+identifier_name:
+  excluded:
+    - id
 
 custom_rules:
   no_objcMembers:

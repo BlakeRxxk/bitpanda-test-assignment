@@ -4,7 +4,7 @@ swiftlint=tools/swiftlint/swiftlint
 swiftformat=tools/swiftformat/swiftformat
 
 lint:
-	${swiftlint} lint
+	${swiftlint} lint --config .swiftlint.yml
 
 fix:
 	${swiftlint} --fix

@@ -104,7 +104,7 @@ class AssetRowCell: UICollectionViewCell {
             textContainer.trailing.constraint(equalTo: amount.trailing),
 
             amount.centerY.constraint(equalTo: contentView.centerY),
-            amount.trailing.constraint(equalTo: contentView.trailing, constant: -Spacing.x16)
+            amount.trailing.constraint(equalTo: contentView.trailing, constant: -Spacing.x16),
         ]
 
         NSLayoutConstraint.activate(activeConstraints)
@@ -121,8 +121,9 @@ class AssetRowCell: UICollectionViewCell {
 
     private func updateHighlighted(_ isHighlighted: Bool) {
         UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.contentView.backgroundColor = isHighlighted ?
-                Theme.Background.highlighted : .clear
+            self?.contentView.backgroundColor = isHighlighted
+                ? Theme.Background.highlighted
+                : .clear
         }
     }
 }

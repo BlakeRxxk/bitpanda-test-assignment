@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class FileReader {
+public enum FileReader {
     public static func readJSON(from file: String) -> MainDataWrapper? {
         guard let path = Bundle.main.path(forResource: file, ofType: "json") else {
             return nil

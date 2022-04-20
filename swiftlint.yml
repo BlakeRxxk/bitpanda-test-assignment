@@ -1,6 +1,3 @@
-disabled_rules:
-  - nesting
-
 only_rules:
   - colon
   - fatal_error_message

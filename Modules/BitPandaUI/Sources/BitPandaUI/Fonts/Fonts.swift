@@ -7,6 +7,7 @@
 
 import UIKit.UIFont
 
+// swiftlint:disable nesting
 extension UIFont {
 
     // MARK: Public

@@ -1,0 +1,20 @@
+//
+//  Wallet.swift
+//  BitPandaCore
+//
+//  Created by Oleg Kurgaev on 20.04.2022.
+//
+
+import Foundation
+
+struct Wallet: Codable {
+    let type: Wallet.WalletType
+    let attributes: Wallet.Attributes
+    let id: String
+
+    enum CodingKeys: String, CodingKey {
+        case type
+        case attributes
+        case id
+    }
+}

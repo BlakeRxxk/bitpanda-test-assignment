@@ -8,7 +8,7 @@
 import Foundation
 
 extension Commodity {
-    enum AssetGroup: String, Codable {
+    public enum AssetGroup: String, Codable {
         case coin
         case metal
     }

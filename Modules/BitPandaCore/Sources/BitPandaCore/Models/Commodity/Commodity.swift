@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Commodity: Codable {
-    let type: Commodity.AssetType
-    let attributes: Commodity.Attributes
-    let id: String
+public struct Commodity: Codable {
+    public let type: Commodity.AssetType
+    public let attributes: Commodity.Attributes
+    public let id: String
 
     enum CodingKeys: String, CodingKey {
         case type

@@ -1,5 +1,5 @@
 //
-//  Attributes.swift
+//  CommodityAttributes.swift
 //  BitPandaCore
 //
 //  Created by Oleg Kurgaev on 20.04.2022.
@@ -8,7 +8,88 @@
 import Foundation
 
 extension Commodity {
-    struct Attributes: Codable {
+    public struct Attributes: Codable {
+
+        // MARK: Public
+
+        public let symbol: String
+        public let name: String
+        public let sort: Int
+        public let assetTypeName: Commodity.AssetType
+        public let assetGroupName: Commodity.AssetGroup
+        public let urlCheckAddress: String
+        public let urlCheckTransaction: String
+        public let buyActive: Bool
+        public let sellActive: Bool
+        public let withdrawActive: Bool
+        public let depositActive: Bool
+        public let transferActive: Bool
+        public let available: Bool
+        public let maintenanceEnabled: Bool
+        public let minBuyEur: String
+        public let minSellEur: String
+        public let minWithdrawEur: String
+        public let defaultSellAmount: String
+        public let precisionForFiatPrice: Int
+        public let precisionForCoins: Int
+        public let precisionForTx: Int
+        public let walletMinDeposit: String
+        public let walletSmallDeposit: String
+        public let walletSmallDepositFee: String
+        public let avgPrice: String
+        public let color: String
+        public let walletWithdrawFee: String
+        public let change24H: String
+        public let change24HAmount: String
+        public let change1W: String
+        public let change1WAmount: String
+        public let change1M: String
+        public let change1MAmount: String
+        public let change1Y: String
+        public let change1YAmount: String
+        public let logo: String
+        public let logoDark: String
+        public let supportDestinationTag: Bool
+        public let circulatingSupply: String?
+        public let allowedUnverified: Bool
+        public let allowedDocumented: Bool
+        public let allowedVerified: Bool
+        public let measurementUnit: String?
+        public let ieoPhases: [IeoPhase?]
+        public let info: String
+        public let unavailableReason: String
+        public let maintenanceReason: String
+        public let walletInfo: String
+        public let extraInfo: String
+        public let infoIntegration: String
+        public let infoDeu: String
+        public let infoEng: String
+        public let infoFra: String
+        public let unavailableReasonDeu: String
+        public let unavailableReasonEng: String
+        public let unavailableReasonFra: String
+        public let maintenanceReasonDeu: String
+        public let maintenanceReasonEng: String
+        public let maintenanceReasonFra: String
+        public let walletInfoDeu: String
+        public let walletInfoEng: String
+        public let walletInfoFra: String
+        public let extraInfoDeu: String
+        public let extraInfoEng: String
+        public let extraInfoFra: String
+        public let infoIntegrationDeu: String
+        public let infoIntegrationEng: String
+        public let infoIntegrationFra: String
+        public let investmentInfo: String?
+        public let investmentInfoDeu: String?
+        public let investmentInfoEng: String?
+        public let investmentInfoFra: String?
+        public let androidSupportedVersion: String?
+        public let iosSupportedVersion: String?
+        public let family: Commodity.Attributes.Family?
+
+        // MARK: Internal
+
         enum CodingKeys: String, CodingKey {
             case symbol
             case name
@@ -86,82 +167,6 @@ extension Commodity {
             case iosSupportedVersion = "ios_supported_version"
             case family
         }
-
-        let symbol: String
-        let name: String
-        let sort: Int
-        let assetTypeName: Commodity.AssetType
-        let assetGroupName: Commodity.AssetGroup
-        let urlCheckAddress: String
-        let urlCheckTransaction: String
-        let buyActive: Bool
-        let sellActive: Bool
-        let withdrawActive: Bool
-        let depositActive: Bool
-        let transferActive: Bool
-        let available: Bool
-        let maintenanceEnabled: Bool
-        let minBuyEur: String
-        let minSellEur: String
-        let minWithdrawEur: String
-        let defaultSellAmount: String
-        let precisionForFiatPrice: Int
-        let precisionForCoins: Int
-        let precisionForTx: Int
-        let walletMinDeposit: String
-        let walletSmallDeposit: String
-        let walletSmallDepositFee: String
-        let avgPrice: String
-        let color: String
-        let walletWithdrawFee: String
-        let change24H: String
-        let change24HAmount: String
-        let change1W: String
-        let change1WAmount: String
-        let change1M: String
-        let change1MAmount: String
-        let change1Y: String
-        let change1YAmount: String
-        let logo: String
-        let logoDark: String
-        let supportDestinationTag: Bool
-        let circulatingSupply: String?
-        let allowedUnverified: Bool
-        let allowedDocumented: Bool
-        let allowedVerified: Bool
-        let measurementUnit: String?
-        let ieoPhases: [IeoPhase]
-        let info: String
-        let unavailableReason: String
-        let maintenanceReason: String
-        let walletInfo: String
-        let extraInfo: String
-        let infoIntegration: String
-        let infoDeu: String
-        let infoEng: String
-        let infoFra: String
-        let unavailableReasonDeu: String
-        let unavailableReasonEng: String
-        let unavailableReasonFra: String
-        let maintenanceReasonDeu: String
-        let maintenanceReasonEng: String
-        let maintenanceReasonFra: String
-        let walletInfoDeu: String
-        let walletInfoEng: String
-        let walletInfoFra: String
-        let extraInfoDeu: String
-        let extraInfoEng: String
-        let extraInfoFra: String
-        let infoIntegrationDeu: String
-        let infoIntegrationEng: String
-        let infoIntegrationFra: String
-        let investmentInfo: String?
-        let investmentInfoDeu: String?
-        let investmentInfoEng: String?
-        let investmentInfoFra: String?
-        let androidSupportedVersion: String?
-        let iosSupportedVersion: String?
-        let family: Commodity.Attributes.Family?
 
     }
 }

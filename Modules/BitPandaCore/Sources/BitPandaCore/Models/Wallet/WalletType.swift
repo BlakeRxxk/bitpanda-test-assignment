@@ -8,7 +8,7 @@
 import Foundation
 
 extension Wallet {
-    enum WalletType: String, Codable {
+    public enum WalletType: String, Codable {
         case wallet
     }
 

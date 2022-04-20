@@ -5,6 +5,7 @@
 //  Created by Oleg Kurgaev on 12.04.2022.
 //
 
+import BitPandaCore
 import BitPandaUI
 import Combine
 import UIKit
@@ -27,6 +28,9 @@ class AssetViewController: ViewController<AssetView> {
 
     let viewModel: AssetsViewModel
 
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray100
@@ -36,6 +40,16 @@ class AssetViewController: ViewController<AssetView> {
         createData()
         configureDataSource()
         specializedView.collectionView?.delegate = self
+
+
+    }
+
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let testData = FileReader.readJSON(from: "Masterdata")
+        
+        print(testData!.data.attributes.commodities)
     }
 
     // MARK: Private
@@ -90,3 +104,4 @@ struct Asset: Hashable {
     let amount: Float
     let image: UIImage?
 }
+

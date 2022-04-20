@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct IeoPhase: Codable {
-    let type: String
-    let attributes: IeoPhase.Attributes
-    let id: String
+public struct IeoPhase: Codable {
+    public let type: String
+    public let attributes: IeoPhase.Attributes
+    public let id: String
 
     enum CodingKeys: String, CodingKey {
         case type

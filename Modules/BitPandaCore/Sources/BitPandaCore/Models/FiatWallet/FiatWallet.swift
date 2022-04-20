@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct FiatWallet: Codable {
-    let type: String
-    let attributes: FiatWallet.Attributes
-    let id: String
+public struct FiatWallet: Codable {
+    public let type: String
+    public let attributes: FiatWallet.Attributes
+    public let id: String
 
     enum CodingKeys: String, CodingKey {
         case type

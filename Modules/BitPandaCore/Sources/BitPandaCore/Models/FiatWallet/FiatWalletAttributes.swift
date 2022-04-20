@@ -1,5 +1,5 @@
 //
-//  Attributes.swift
+//  FiatWalletAttributes.swift
 //  BitPandaCore
 //
 //  Created by Oleg Kurgaev on 20.04.2022.
@@ -8,12 +8,12 @@
 import Foundation
 
 extension FiatWallet {
-    struct Attributes: Codable {
-        let fiatID: String
-        let fiatSymbol: String
-        let balance: String
-        let name: String
-        let pendingTransactionsCount: Int
+    public struct Attributes: Codable {
+        public let fiatID: String
+        public let fiatSymbol: String
+        public let balance: String
+        public let name: String
+        public let pendingTransactionsCount: Int
 
         enum CodingKeys: String, CodingKey {
             case fiatID = "fiat_id"

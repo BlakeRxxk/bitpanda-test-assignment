@@ -8,7 +8,7 @@
 import Foundation
 
 extension Commodity {
-    enum AssetType: String, Codable {
+    public enum AssetType: String, Codable {
         case commodity
         case cryptocoin
     }

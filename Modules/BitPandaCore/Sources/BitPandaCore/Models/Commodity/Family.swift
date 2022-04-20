@@ -8,7 +8,7 @@
 import Foundation
 
 extension Commodity.Attributes {
-    enum Family: String, Codable {
+    public enum Family: String, Codable {
         case eth = "ETH"
         case neo = "NEO"
     }

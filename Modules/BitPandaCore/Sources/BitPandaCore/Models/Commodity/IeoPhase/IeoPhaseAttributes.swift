@@ -1,5 +1,5 @@
 //
-//  Attributes.swift
+//  IeoPhaseAttributes.swift
 //  BitPandaCore
 //
 //  Created by Oleg Kurgaev on 20.04.2022.
@@ -8,14 +8,14 @@
 import Foundation
 
 extension IeoPhase {
-    struct Attributes: Codable {
-        let name: String
-        let phaseNumber: Int
-        let startDate: IeoPhase.PhaseDate
-        let endDate: IeoPhase.PhaseDate
-        let maxStock: String
-        let price: String
-        let active: Bool
+    public struct Attributes: Codable {
+        public let name: String
+        public let phaseNumber: Int
+        public let startDate: IeoPhase.PhaseDate
+        public let endDate: IeoPhase.PhaseDate
+        public let maxStock: String
+        public let price: String
+        public let active: Bool
 
         enum CodingKeys: String, CodingKey {
             case name

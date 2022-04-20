@@ -7,22 +7,37 @@
 
 import Foundation
 
+// MARK: - MainDataWrapper
+
+public struct MainDataWrapper: Codable {
+    public let data: MainData
+
+    enum CodingKeys: String, CodingKey {
+        case data
+    }
+}
+
 // MARK: - MainData
 
-struct MainData {
-    let type: String
-    let attributes: Attributes
+public struct MainData: Codable {
+    public let type: String
+    public let attributes: Attributes
+
+    enum CodingKeys: String, CodingKey {
+        case type
+        case attributes
+    }
 }
 
 // MARK: - Attributes
 
-struct Attributes: Codable {
-    let cryptocoins: [Commodity]
-    let commodities: [Commodity]
-    let fiats: [Fiat]
-    let wallets: [Wallet]
-    let commodityWallets: [Wallet]
-    let fiatwallets: [FiatWallet]
+public struct Attributes: Codable {
+    public let cryptocoins: [Commodity]
+    public let commodities: [Commodity]
+    public let fiats: [Fiat]
+    public let wallets: [Wallet]
+    public let commodityWallets: [Wallet]
+    public let fiatwallets: [FiatWallet]
 
     enum CodingKeys: String, CodingKey {
         case cryptocoins

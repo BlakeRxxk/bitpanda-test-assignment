@@ -8,9 +8,9 @@
 import Foundation
 
 extension IeoPhase {
-    struct PhaseDate: Codable {
-        let dateIso8601: Date
-        let unix: String
+    public struct PhaseDate: Codable {
+        public let dateIso8601: String
+        public let unix: String
 
         enum CodingKeys: String, CodingKey {
             case dateIso8601 = "date_iso8601"

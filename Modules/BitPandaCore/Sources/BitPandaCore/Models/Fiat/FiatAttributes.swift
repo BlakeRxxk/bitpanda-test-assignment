@@ -1,5 +1,5 @@
 //
-//  Attributes.swift
+//  FiatAttributes.swift
 //  BitPandaCore
 //
 //  Created by Oleg Kurgaev on 20.04.2022.
@@ -8,7 +8,29 @@
 import Foundation
 
 extension Fiat {
-    struct Attributes: Codable {
+    public struct Attributes: Codable {
+
+        // MARK: Public
+
+        public let symbol: String
+        public let name: String
+        public let precision: Int
+        public let toEurRate: String
+        public let defaultSellAmount: String
+        public let numericCharacterReference: String
+        public let minWithdrawEuro: String
+        public let symbolCharacter: String
+        public let hasWallets: Bool
+        public let logo: String
+        public let logoDark: String
+        public let logoWhite: String
+        public let logoColor: String
+        public let nameDeu: String
+        public let nameEng: String
+        public let nameFra: String
+
+        // MARK: Internal
+
         enum CodingKeys: String, CodingKey {
             case symbol
             case name
@@ -27,23 +49,6 @@ extension Fiat {
             case nameEng = "name_eng"
             case nameFra = "name_fra"
         }
-
-        let symbol: String
-        let name: String
-        let precision: Int
-        let toEurRate: String
-        let defaultSellAmount: String
-        let numericCharacterReference: String
-        let minWithdrawEuro: String
-        let symbolCharacter: String
-        let hasWallets: Bool
-        let logo: String
-        let logoDark: String
-        let logoWhite: String
-        let logoColor: String
-        let nameDeu: String
-        let nameEng: String
-        let nameFra: String
 
     }
 }

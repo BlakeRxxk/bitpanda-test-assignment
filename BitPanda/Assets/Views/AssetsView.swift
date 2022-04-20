@@ -52,7 +52,7 @@ public class AssetView: View {
         collectionView = UICollectionView(frame: bounds, collectionViewLayout: createLayout())
         collectionView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView?.register(AssetRowCell.self, forCellWithReuseIdentifier: AssetRowCell.reuseIdentifier)
-        collectionView?.backgroundColor = .white64
+        collectionView?.backgroundColor = Theme.Background.primary
         addSubview(collectionView!)
     }
 }

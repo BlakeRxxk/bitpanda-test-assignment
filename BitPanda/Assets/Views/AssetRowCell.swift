@@ -78,14 +78,14 @@ class AssetRowCell: UICollectionViewCell {
         textContainer.spacing = 2
 
         title.font = UIFont.Body.Size14.medium
-        title.textColor = UIColor.gray100
+        title.textColor = Theme.Text.primary
 
         caption.font = UIFont.Body.Size12.regular
-        caption.textColor = UIColor.gray60
+        caption.textColor = Theme.Text.secondary
 
         amount.font = UIFont.Body.Size16.medium
-        amount.textColor = UIColor.gray100
-        contentView.layer.cornerRadius = Constants.cornerRadius
+        amount.textColor = Theme.Text.primary
+        contentView.layer.cornerRadius = CornerRadius.x12
     }
 
     private func layout() {
@@ -94,17 +94,17 @@ class AssetRowCell: UICollectionViewCell {
         }
 
         activeConstraints = [
-            image.leading.constraint(equalTo: contentView.leading, constant: Constants.offset),
-            image.width.constraint(equalToConstant: Constants.imageSize),
-            image.height.constraint(equalToConstant: Constants.imageSize),
+            image.leading.constraint(equalTo: contentView.leading, constant: Spacing.x16),
+            image.width.constraint(equalToConstant: Spacing.x40),
+            image.height.constraint(equalToConstant: Spacing.x40),
             image.centerY.constraint(equalTo: contentView.centerY),
 
-            textContainer.leading.constraint(equalTo: image.trailing, constant: Constants.offset),
+            textContainer.leading.constraint(equalTo: image.trailing, constant: Spacing.x16),
             textContainer.centerY.constraint(equalTo: contentView.centerY),
             textContainer.trailing.constraint(equalTo: amount.trailing),
 
             amount.centerY.constraint(equalTo: contentView.centerY),
-            amount.trailing.constraint(equalTo: contentView.trailing, constant: -Constants.offset)
+            amount.trailing.constraint(equalTo: contentView.trailing, constant: -Spacing.x16)
         ]
 
         NSLayoutConstraint.activate(activeConstraints)
@@ -121,15 +121,8 @@ class AssetRowCell: UICollectionViewCell {
 
     private func updateHighlighted(_ isHighlighted: Bool) {
         UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.contentView.backgroundColor = isHighlighted ? .gray16 : .clear
+            self?.contentView.backgroundColor = isHighlighted ?
+                Theme.Background.highlighted : .clear
         }
-    }
-}
-
-extension AssetRowCell {
-    fileprivate enum Constants {
-        static let imageSize: CGFloat = 40
-        static let offset: CGFloat = 16
-        static let cornerRadius: CGFloat = 12
     }
 }

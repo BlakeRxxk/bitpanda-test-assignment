@@ -29,7 +29,7 @@ class AssetViewController: ViewController<AssetView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .gray100
         title = "Assets"
         navigationController?.navigationBar.prefersLargeTitles = true
 
@@ -48,9 +48,9 @@ class AssetViewController: ViewController<AssetView> {
             collectionView: specializedView.collectionView!,
             cellProvider: { collectionView, indexPath, contact -> AssetRowCell? in
 
-                let cell = collectionView.dequeueReusableCell(
+                guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: AssetRowCell.reuseIdentifier,
-                    for: indexPath) as! AssetRowCell
+                    for: indexPath) as? AssetRowCell else { return nil }
                 cell.model = contact
                 return cell
             })

@@ -6,6 +6,7 @@
 //
 
 import BitPandaCore
+import BitPandaUI
 import UIKit
 
 final class AppCoordinator: PresentationCoordinator {
@@ -29,8 +30,8 @@ final class AppCoordinator: PresentationCoordinator {
         let assetsCoordinator = container.makeAssetsCoordinator()
         let walletsCoordinator = WalletsCoordinator()
 
-        walletsCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "assets", image: nil, tag: 0)
-        assetsCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "wallets", image: nil, tag: 1)
+        walletsCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "assets", image: UIImage.assets, tag: 0)
+        assetsCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "wallets", image: UIImage.wallet, tag: 1)
 
         rootViewController.setViewControllers([
             walletsCoordinator.rootViewController,

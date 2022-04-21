@@ -1,6 +1,6 @@
 //
 //  AssetRowCell.swift
-//  BitPanda
+//  AssetsFeature
 //
 //  Created by Oleg Kurgaev on 19.04.2022.
 //
@@ -26,16 +26,6 @@ class AssetRowCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Public
-
-    override public func prepareForReuse() {
-        super.prepareForReuse()
-        title.text = nil
-        caption.text = nil
-        amount.text = nil
-        image.image = nil
-    }
-
     // MARK: Internal
 
     static let reuseIdentifier = "AssetRowCellID"
@@ -44,9 +34,9 @@ class AssetRowCell: UICollectionViewCell {
     private(set) var title: UILabel = .init()
     private(set) var caption: UILabel = .init()
     private(set) var amount: UILabel = .init()
-    private(set) var image: UIImageView = .init()
+    private(set) var image: Icon = .init()
 
-    var model: Asset? {
+    var model: AssetCellModel? {
         didSet {
             guard oldValue != model else { return }
             updateCell(with: model)
@@ -59,7 +49,19 @@ class AssetRowCell: UICollectionViewCell {
         }
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        image.prepareForReuse()
+    }
+
+    func loadImage() {
+        image.update(with: Icon.Model(light: lightLogo, dark: darkLogo))
+    }
+
     // MARK: Private
+
+    private var lightLogo: URL?
+    private var darkLogo: URL?
 
     private var activeConstraints: [NSLayoutConstraint] = []
 
@@ -110,13 +112,15 @@ class AssetRowCell: UICollectionViewCell {
         NSLayoutConstraint.activate(activeConstraints)
     }
 
-    private func updateCell(with model: Asset?) {
+    private func updateCell(with model: AssetCellModel?) {
         guard let model = model else { return }
 
         title.text = model.title
         caption.text = model.caption
-        amount.text = String(format: "+$ %.3f", model.amount)
-        image.image = model.image
+        darkLogo = model.darkLogo
+        lightLogo = model.lightLogo
+        amount.text = model.amount
+        loadImage()
     }
 
     private func updateHighlighted(_ isHighlighted: Bool) {

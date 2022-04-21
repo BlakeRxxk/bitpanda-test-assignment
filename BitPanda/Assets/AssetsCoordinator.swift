@@ -5,6 +5,7 @@
 //  Created by Oleg Kurgaev on 18.04.2022.
 //
 
+import AssetsFeature
 import BitPandaCore
 import UIKit
 
@@ -34,6 +35,6 @@ final class AssetsCoordinator: NavigatableCoordinator {
 
     // MARK: Private
 
-    private let assetsViewController: AssetViewController
+    private let assetsViewController: AssetsViewController
 
 }

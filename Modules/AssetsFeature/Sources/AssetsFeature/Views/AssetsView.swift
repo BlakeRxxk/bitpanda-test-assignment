@@ -1,6 +1,6 @@
 //
 //  AssetsView.swift
-//  BitPanda
+//  AssetsFeature
 //
 //  Created by Oleg Kurgaev on 19.04.2022.
 //
@@ -15,7 +15,7 @@ public class AssetView: View {
     override public init() {
         super.init()
 
-        configureHierarchy()
+        createUI()
     }
 
     // MARK: Internal
@@ -48,7 +48,7 @@ public class AssetView: View {
 
     // MARK: Private
 
-    private func configureHierarchy() {
+    private func createUI() {
         collectionView = UICollectionView(frame: bounds, collectionViewLayout: createLayout())
         collectionView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView?.register(AssetRowCell.self, forCellWithReuseIdentifier: AssetRowCell.reuseIdentifier)

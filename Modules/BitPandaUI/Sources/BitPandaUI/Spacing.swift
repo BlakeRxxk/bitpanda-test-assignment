@@ -5,6 +5,7 @@
 //  Created by Oleg Kurgaev on 20.04.2022.
 //
 
+import SVGKitSwift
 import UIKit
 
 // MARK: - Spacing

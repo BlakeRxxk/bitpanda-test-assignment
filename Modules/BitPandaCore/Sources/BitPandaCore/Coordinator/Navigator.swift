@@ -2,7 +2,7 @@
 //  Navigator.swift
 //  BitPandaCore
 //
-//  Created by Олег Кургаев on 18.04.2022.
+//  Created by Oleg Kurgaev 18.04.2022.
 //
 
 import Foundation

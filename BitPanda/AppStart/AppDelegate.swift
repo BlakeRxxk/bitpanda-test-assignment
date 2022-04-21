@@ -6,7 +6,11 @@
 //
 
 import BitPandaCore
+import BitPandaUI
+import PINCache
 import UIKit
+
+// MARK: - AppDelegate
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
         guard let window = window else { return false }
+        setupCache()
+        setupAppearance()
 
         let providerFactories = DependencyContainer()
         appCoordinator = AppCoordinator(in: window, with: providerFactories)
@@ -35,6 +41,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func setupAppearance() {
         // place for apperance
+        UITabBar.appearance().barTintColor = Theme.Background.tabBar
+        UITabBar.appearance().tintColor = Theme.Text.primary
+        UITabBar.appearance().unselectedItemTintColor = Theme.Background.iconInactive
     }
 
+    private func setupCache() {
+        PINCache.shared.diskCache.byteLimit = Constants.diskLimit
+        PINCache.shared.diskCache.ageLimit = Constants.ageLimit
+        PINCache.shared.memoryCache.ageLimit = Constants.ageLimit
+    }
+
+}
+
+extension AppDelegate {
+    fileprivate enum Constants {
+        static let diskLimit: UInt = 50 * 1024 * 1024 // limit cache with 50MB
+        static let ageLimit: TimeInterval = 60 * 60 * 24 * 10 // limit cache age with 10 days
+    }
 }

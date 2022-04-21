@@ -35,6 +35,7 @@ open class ViewController<View: UIView>: UIViewController {
 
     override public func loadView() {
         view = viewCreator()
+        view.backgroundColor = Theme.Background.primary
     }
 
     // MARK: Private

@@ -5,6 +5,7 @@
 //  Created by Oleg Kurgaev on 19.04.2022.
 //
 
+import AssetsFeature
 import Foundation
 
 // MARK: - DependencyContainer
@@ -21,8 +22,9 @@ extension DependencyContainer: AssetsFactory {
         AssetsCoordinator(self)
     }
 
-    func makeAssetsViewController() -> AssetViewController {
-        let viewModel = AssetsViewModel()
-        return AssetViewController(viewModel: viewModel)
+    func makeAssetsViewController() -> AssetsViewController {
+        let service = AssetsService()
+        let viewModel = AssetsViewModel(service: service)
+        return AssetsViewController(viewModel: viewModel)
     }
 }

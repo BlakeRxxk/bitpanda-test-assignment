@@ -33,12 +33,13 @@ public class AssetsViewController: ViewController<AssetView> {
         configureDataSource()
         setupBindings()
         specializedView.collectionView?.delegate = self
-        setupSearchController()
+
     }
 
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchAggregatedAssets()
+        setupSearchController()
     }
 
     // MARK: Internal
@@ -65,7 +66,6 @@ public class AssetsViewController: ViewController<AssetView> {
         var snapshot = Snapshot()
         snapshot.appendSections([AssetView.Section.main])
         snapshot.appendItems(assets)
-        dataSource?.apply(snapshot, animatingDifferences: false)
     }
 
     private func cellProvider(

@@ -53,6 +53,8 @@ public class AssetView: View {
         collectionView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView?.register(AssetRowCell.self, forCellWithReuseIdentifier: AssetRowCell.reuseIdentifier)
         collectionView?.backgroundColor = Theme.Background.primary
-        addSubview(collectionView!)
+        
+        guard let collectionView = collectionView else { return }
+        addSubview(collectionView)
     }
 }

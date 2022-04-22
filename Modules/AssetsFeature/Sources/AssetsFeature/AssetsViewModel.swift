@@ -32,24 +32,41 @@ public final class AssetsViewModel {
 
     public func change(scope index: SearchScope) {
         var data: [AssetCellModel] = []
+        selectedScope = index
         switch index {
         case .all:
+            selectedScope = .all
             data = cache
-        case .cryptocoins:
-            data = cache.filter { $0.type == .cryptocoin }
-        case .commodities:
-            data = cache.filter { $0.type == .commodity }
-        case .fiats:
-            data = cache.filter { $0.type == .fiat }
+        default:
+            data = cache.filter { $0.type == selectedScope.cellType }
         }
+        
+        if searchString.count > 0 {
+            data = data
+                .filter { applySearch(for: searchString, in: $0.title) }
+        }
+        
         dataSource = data
     }
 
     public func search(with text: String) {
         var data: [AssetCellModel] = []
-        data = cache.filter { Fuzzy.search(needle: text, haystack: $0.title) }
-
+        searchString = text
+        data = cache
+        
+        if selectedScope != .all {
+            data = data
+                .filter { $0.type == selectedScope.cellType }
+        }
+        
+        data = data
+            .filter { applySearch(for: text, in: $0.title) }
+        
         dataSource = data
+    }
+    
+    private func applySearch(for item: String, in stack: String ) -> Bool {
+        Fuzzy.search(needle: item, haystack: stack)
     }
 
     // MARK: Internal
@@ -60,7 +77,8 @@ public final class AssetsViewModel {
     // MARK: Private
 
     private var cache: [AssetCellModel] = []
-
+    private var selectedScope: SearchScope = .all
+    private var searchString: String = ""
     private let service: AssetsServiceProtocol
 }
 
@@ -71,6 +89,19 @@ public enum SearchScope: Int {
     case cryptocoins
     case commodities
     case fiats
+    
+    var cellType: AssetCellModel.CellType? {
+        switch self {
+        case .all:
+            return nil
+        case .cryptocoins:
+            return .cryptocoin
+        case .commodities:
+            return .commodity
+        case .fiats:
+            return .fiat
+        }
+    }
 }
 
 extension AssetsViewModel {

@@ -39,7 +39,12 @@ public class AssetsViewController: ViewController<AssetView> {
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchAggregatedAssets()
-        setupSearchController()
+        setupSearchController(with: [
+            Localized.all,
+            Localized.cryptocoins,
+            Localized.commodities,
+            Localized.fiats,
+        ])
     }
 
     // MARK: Internal
@@ -99,28 +104,11 @@ public class AssetsViewController: ViewController<AssetView> {
         snapshot.appendItems(items)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
-
-    private func setupSearchController() {
-
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.scopeButtonTitles = [
-            Localized.all,
-            Localized.cryptocoins,
-            Localized.commodities,
-            Localized.fiats,
-        ]
-
-        searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.delegate = self
-        navigationItem.hidesSearchBarWhenScrolling = false
-
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-
-    }
 }
+
+// MARK: SearchableList
+
+extension AssetsViewController: SearchableList {}
 
 // MARK: UICollectionViewDelegate
 
@@ -150,6 +138,10 @@ extension AssetsViewController: UISearchBarDelegate {
 
     public func searchBar(_: UISearchBar, textDidChange searchText: String) {
         viewModel.search(with: searchText)
+    }
+
+    public func searchBarCancelButtonClicked(_: UISearchBar) {
+        viewModel.search(with: "")
     }
 }
 

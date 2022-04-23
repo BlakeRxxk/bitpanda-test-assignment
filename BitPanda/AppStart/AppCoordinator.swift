@@ -9,6 +9,8 @@ import BitPandaCore
 import BitPandaUI
 import UIKit
 
+// MARK: - AppCoordinator
+
 final class AppCoordinator: PresentationCoordinator {
 
     // MARK: Lifecycle
@@ -28,10 +30,26 @@ final class AppCoordinator: PresentationCoordinator {
 
     func start() {
         let assetsCoordinator = container.makeAssetsCoordinator()
-        let walletsCoordinator = WalletsCoordinator()
+        let walletsCoordinator = container.makeWalletsCoordinator()
 
-        walletsCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "assets", image: UIImage.assets, tag: 0)
-        assetsCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "wallets", image: UIImage.wallet, tag: 1)
+        walletsCoordinator
+            .rootViewController
+            .tabBarItem = UITabBarItem(
+                title: Localized.assets,
+                image: UIImage.wallet,
+                tag: 0)
+
+        assetsCoordinator
+            .rootViewController
+            .tabBarItem = UITabBarItem(
+                title: Localized.wallets,
+                image: UIImage.assets,
+                tag: 1)
+        attachChild(assetsCoordinator)
+        attachChild(walletsCoordinator)
+
+        assetsCoordinator.start()
+        walletsCoordinator.start()
 
         rootViewController.setViewControllers([
             walletsCoordinator.rootViewController,
@@ -39,4 +57,11 @@ final class AppCoordinator: PresentationCoordinator {
         ], animated: false)
     }
 
+}
+
+extension AppCoordinator {
+    fileprivate enum Localized {
+        static let assets = "Assets"
+        static let wallets = "Wallets"
+    }
 }

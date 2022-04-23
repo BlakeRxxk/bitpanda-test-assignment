@@ -27,6 +27,7 @@ indentation: 4
 identifier_name:
   excluded:
     - id
+    - to
 
 custom_rules:
   no_objcMembers:

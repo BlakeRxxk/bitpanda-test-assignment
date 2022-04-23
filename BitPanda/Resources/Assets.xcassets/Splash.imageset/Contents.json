@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "splash.png",
+      "filename" : "bit-panda-test-light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "bit-panda-test.pdf",
       "idiom" : "universal"
     }
   ],

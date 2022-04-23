@@ -35,17 +35,16 @@ public final class AssetsViewModel {
         selectedScope = index
         switch index {
         case .all:
-            selectedScope = .all
             data = cache
         default:
             data = cache.filter { $0.type == selectedScope.cellType }
         }
-        
+
         if searchString.count > 0 {
             data = data
                 .filter { applySearch(for: searchString, in: $0.title) }
         }
-        
+
         dataSource = data
     }
 
@@ -53,20 +52,16 @@ public final class AssetsViewModel {
         var data: [AssetCellModel] = []
         searchString = text
         data = cache
-        
+
         if selectedScope != .all {
             data = data
                 .filter { $0.type == selectedScope.cellType }
         }
-        
+
         data = data
             .filter { applySearch(for: text, in: $0.title) }
-        
+
         dataSource = data
-    }
-    
-    private func applySearch(for item: String, in stack: String ) -> Bool {
-        Fuzzy.search(needle: item, haystack: stack)
     }
 
     // MARK: Internal
@@ -78,8 +73,13 @@ public final class AssetsViewModel {
 
     private var cache: [AssetCellModel] = []
     private var selectedScope: SearchScope = .all
-    private var searchString: String = ""
+    private var searchString = ""
     private let service: AssetsServiceProtocol
+
+    private func applySearch(for item: String, in stack: String ) -> Bool {
+        Fuzzy.search(needle: item, haystack: stack)
+    }
+
 }
 
 // MARK: - SearchScope
@@ -89,7 +89,7 @@ public enum SearchScope: Int {
     case cryptocoins
     case commodities
     case fiats
-    
+
     var cellType: AssetCellModel.CellType? {
         switch self {
         case .all:

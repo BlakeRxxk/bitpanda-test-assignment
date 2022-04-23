@@ -1,5 +1,5 @@
 //
-//  Icon.swift
+//  SVGIcon.swift
 //  BitPandaUI
 //
 //  Created by Oleg Kurgaev on 20.04.2022.
@@ -10,9 +10,9 @@ import PINCache
 import SVGKit
 import SVGKitSwift
 
-// MARK: - Icon
+// MARK: - SVGIcon
 
-public final class Icon: View {
+public final class SVGIcon: View {
 
     // MARK: Lifecycle
 
@@ -33,7 +33,7 @@ public final class Icon: View {
         updateLogo()
     }
 
-    public func update(with model: Icon.Model) {
+    public func update(with model: SVGIcon.Model) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 
             self?.dataFetcher.requestData(at: model.light!) { res in
@@ -99,7 +99,7 @@ public final class Icon: View {
     }
 }
 
-extension Icon {
+extension SVGIcon {
     public struct Model {
         public let light: URL?
         public let dark: URL?

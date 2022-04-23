@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Wallet: Codable {
-    public let type: Wallet.WalletType
+    public var type: Wallet.WalletType
     public let attributes: Wallet.Attributes
     public let id: String
 

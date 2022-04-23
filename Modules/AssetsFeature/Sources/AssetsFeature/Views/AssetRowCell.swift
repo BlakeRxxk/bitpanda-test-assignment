@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - AssetRowCell
 
-class AssetRowCell: UICollectionViewCell {
+final class AssetRowCell: UICollectionViewCell {
 
     // MARK: Lifecycle
 
@@ -30,11 +30,9 @@ class AssetRowCell: UICollectionViewCell {
 
     static let reuseIdentifier = "AssetRowCellID"
 
-    private(set) var textContainer: UIStackView = .init()
-    private(set) var title: UILabel = .init()
-    private(set) var caption: UILabel = .init()
+    private(set) var headline: HeadlineView = .init()
     private(set) var amount: UILabel = .init()
-    private(set) var image: Icon = .init()
+    private(set) var image: SVGIcon = .init()
 
     var model: AssetCellModel? {
         didSet {
@@ -55,7 +53,7 @@ class AssetRowCell: UICollectionViewCell {
     }
 
     func loadImage() {
-        image.update(with: Icon.Model(light: lightLogo, dark: darkLogo))
+        image.update(with: SVGIcon.Model(light: lightLogo, dark: darkLogo))
     }
 
     // MARK: Private
@@ -67,31 +65,18 @@ class AssetRowCell: UICollectionViewCell {
 
     private func createUI() {
         contentView.addSubview(image)
-        contentView.addSubview(textContainer)
+        contentView.addSubview(headline)
         contentView.addSubview(amount)
-
-        textContainer.addArrangedSubview(title)
-        textContainer.addArrangedSubview(caption)
     }
 
     private func configureUI() {
-        textContainer.axis = .vertical
-        textContainer.distribution = .fill
-        textContainer.spacing = 2
-
-        title.font = UIFont.Body.Size14.medium
-        title.textColor = Theme.Text.primary
-
-        caption.font = UIFont.Body.Size12.regular
-        caption.textColor = Theme.Text.secondary
-
         amount.font = UIFont.Body.Size16.medium
         amount.textColor = Theme.Text.primary
         contentView.layer.cornerRadius = CornerRadius.x12
     }
 
     private func layout() {
-        [textContainer, image, amount].forEach {
+        [headline, image, amount].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
@@ -101,9 +86,9 @@ class AssetRowCell: UICollectionViewCell {
             image.height.constraint(equalToConstant: Spacing.x40),
             image.centerY.constraint(equalTo: contentView.centerY),
 
-            textContainer.leading.constraint(equalTo: image.trailing, constant: Spacing.x16),
-            textContainer.centerY.constraint(equalTo: contentView.centerY),
-            textContainer.trailing.constraint(equalTo: amount.trailing),
+            headline.leading.constraint(equalTo: image.trailing),
+            headline.centerY.constraint(equalTo: contentView.centerY),
+            headline.trailing.constraint(equalTo: amount.trailing),
 
             amount.centerY.constraint(equalTo: contentView.centerY),
             amount.trailing.constraint(equalTo: contentView.trailing, constant: -Spacing.x16),
@@ -115,19 +100,15 @@ class AssetRowCell: UICollectionViewCell {
     private func updateCell(with model: AssetCellModel?) {
         guard let model = model else { return }
 
-        title.text = model.title
-        caption.text = model.caption
+        headline.title = model.title
+        headline.caption = model.caption
         darkLogo = model.darkLogo
         lightLogo = model.lightLogo
         amount.text = model.amount
         loadImage()
     }
-
-    private func updateHighlighted(_ isHighlighted: Bool) {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.contentView.backgroundColor = isHighlighted
-                ? Theme.Background.highlighted
-                : .clear
-        }
-    }
 }
+
+// MARK: HighlightableCell
+
+extension AssetRowCell: HighlightableCell {}

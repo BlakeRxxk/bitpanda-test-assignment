@@ -7,6 +7,7 @@
 
 import AssetsFeature
 import Foundation
+import WalletsFeature
 
 // MARK: - DependencyContainer
 
@@ -27,4 +28,27 @@ extension DependencyContainer: AssetsFactory {
         let viewModel = AssetsViewModel(service: service)
         return AssetsViewController(viewModel: viewModel)
     }
+}
+
+// MARK: WalletsFactory
+
+extension DependencyContainer: WalletsFactory {
+    func makeWalletsDetailView(_ passData: WalletsDetailViewDataPass) -> WalletsDetailViewController {
+        let service = WalletsService()
+        let viewModel = WalletsDetailViewModel(
+            dataPass: passData,
+            service: service)
+        return WalletsDetailViewController(viewModel: viewModel)
+    }
+
+    func makeWalletsCoordinator() -> WalletsCoordinator {
+        WalletsCoordinator(self)
+    }
+
+    func makeWalletsViewController() -> WalletsViewController {
+        let service = WalletsService()
+        let viewModel = WalletsViewModel(service: service)
+        return WalletsViewController(viewModel: viewModel)
+    }
+
 }

@@ -36,5 +36,4 @@ final class AssetsCoordinator: NavigatableCoordinator {
     // MARK: Private
 
     private let assetsViewController: AssetsViewController
-
 }

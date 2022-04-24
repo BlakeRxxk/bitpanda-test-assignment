@@ -23,9 +23,9 @@ public final class AssetsViewModel {
 
     public func fetchAggregatedAssets() {
         var data: [AssetCellModel] = []
-        data.append(contentsOf: service.fetchCryptocoins().map { AssetCellModel(from: $0) })
-        data.append(contentsOf: service.fetchCommodities().map { AssetCellModel(from: $0) })
-        data.append(contentsOf: service.fetchFiats().map { AssetCellModel(from: $0) })
+        data.append(contentsOf: service.fetchCryptocoins().mapToCellModel())
+        data.append(contentsOf: service.fetchCommodities().mapToCellModel())
+        data.append(contentsOf: service.fetchFiats().mapToCellModel())
         cache = data
         dataSource = data
     }
@@ -79,33 +79,10 @@ public final class AssetsViewModel {
     private func applySearch(for item: String, in stack: String ) -> Bool {
         Fuzzy.search(needle: item, haystack: stack)
     }
-
-}
-
-// MARK: - SearchScope
-
-public enum SearchScope: Int {
-    case all
-    case cryptocoins
-    case commodities
-    case fiats
-
-    var cellType: AssetCellModel.CellType? {
-        switch self {
-        case .all:
-            return nil
-        case .cryptocoins:
-            return .cryptocoin
-        case .commodities:
-            return .commodity
-        case .fiats:
-            return .fiat
-        }
-    }
 }
 
 extension AssetsViewModel {
     fileprivate enum Localized {
-        static let title = "Assets"
+        static let title = "assets".localize()
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import PINCache
+
 import SVGKit
 import SVGKitSwift
 
@@ -34,27 +34,34 @@ public final class SVGIcon: View {
     }
 
     public func update(with model: SVGIcon.Model) {
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+        guard
+            let darkLogoURL = model.dark,
+            let lightLogoURL = model.light else { return }
 
-            self?.dataFetcher.requestData(at: model.light!) { res in
+        let queue = DispatchQueue(
+            label: "com.bitpanda-test.svg.datafetcher",
+            qos: .utility,
+            attributes: .concurrent)
+
+        queue.async { [weak self] in
+            self?.dataFetcher.requestData(at: lightLogoURL) { res in
                 switch res {
                 case .success(let data):
                     self?.lightLogo = SVGKImage(data: data)
-                default: break //
+                default: break
                 }
 
             }
+        }
 
-            self?.dataFetcher.requestData(at: model.dark!) { res in
+        queue.async { [weak self] in
+            self?.dataFetcher.requestData(at: darkLogoURL) { res in
                 switch res {
                 case .success(let data):
                     self?.darkLogo = SVGKImage(data: data)
-                default: break //
+                default: break
                 }
 
-            }
-            DispatchQueue.main.async { [weak self] in
-                self?.updateLogo()
             }
         }
     }
@@ -69,9 +76,19 @@ public final class SVGIcon: View {
 
     private var dataFetcher = SVGDataFetcher()
 
-    private var lightLogo: SVGKImage?
-    private var darkLogo: SVGKImage?
     private var activeConstraints: [NSLayoutConstraint] = []
+
+    private var lightLogo: SVGKImage? {
+        didSet {
+            updateLogo()
+        }
+    }
+
+    private var darkLogo: SVGKImage? {
+        didSet {
+            updateLogo()
+        }
+    }
 
     private func createUI() {
         addSubview(imageView)
@@ -95,51 +112,9 @@ public final class SVGIcon: View {
     }
 
     private func updateLogo() {
-        imageView.image = traitCollection.userInterfaceStyle == .dark ? darkLogo : lightLogo
-    }
-}
-
-extension SVGIcon {
-    public struct Model {
-        public let light: URL?
-        public let dark: URL?
-
-        public init(light: URL?, dark: URL?) {
-            self.light = light
-            self.dark = dark
-        }
-    }
-}
-
-// MARK: - SVGDataFetcher
-
-class SVGDataFetcher {
-
-    enum FetcherError: Error {
-        case requestFailed
-        case dataCorrupted
-    }
-
-    func requestData(at url: URL, completion: @escaping (Result<Data, FetcherError>) -> Void) {
-        PINCache.shared.object(forKeyAsync: url.absoluteString) { _, _, object in
-            guard let object = object as? Data else { return }
-            completion(.success(object))
-        }
-        let task = URLSession.shared.dataTask(with: url) { responseData, _, responseError in
-            DispatchQueue.main.async {
-
-                if responseError != nil {
-                    completion(.failure(SVGDataFetcher.FetcherError.requestFailed))
-                } else if let data = responseData {
-
-                    PINCache.shared.setObject(data, forKey: url.absoluteString)
-                    completion(.success(data))
-                } else {
-                    completion(.failure(SVGDataFetcher.FetcherError.dataCorrupted))
-                }
-            }
+        DispatchQueue.main.async { [weak self] in
+            self?.imageView.image = self?.traitCollection.userInterfaceStyle == .dark ? self?.darkLogo : self?.lightLogo
         }
 
-        task.resume()
     }
 }

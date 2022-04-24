@@ -20,14 +20,22 @@ struct WalletGroupCellModel: Hashable, Equatable {
     init(from model: (key: String, value: [Wallet]), isCommodity: Bool = false) {
         type = isCommodity ? .commodity : .cryptocoin
         itemID = model.key
-        title = model.value.first?.attributes.cryptocoinSymbol ?? "Wallet"
-        caption = "wallets: \(model.value.count)"
+        title = model.value.first?.attributes.cryptocoinSymbol ?? Localized.fallbackTitle
+        caption = "\(Localized.caption) \(model.value.count)"
     }
 
     init(from model: (key: String, value: [FiatWallet])) {
         type = .fiat
         itemID = model.key
-        title = model.value.first?.attributes.name ?? "Fiat Wallet"
-        caption = "wallets: \(model.value.count)"
+        title = model.value.first?.attributes.name ?? Localized.fallbackFiatTitle
+        caption = "\(Localized.caption) \(model.value.count)"
+    }
+}
+
+extension WalletGroupCellModel {
+    fileprivate enum Localized {
+        static let fallbackTitle = "wallet".localize()
+        static let fallbackFiatTitle = "fiatWallet".localize()
+        static let caption = "wallets".localize().lowercased()
     }
 }

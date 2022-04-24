@@ -150,9 +150,9 @@ extension WalletsViewController: UISearchBarDelegate {
 
 extension WalletsViewController {
     fileprivate enum Localized {
-        static let all = "All"
-        static let cryptocoins = "Cryptocoins"
-        static let commodities = "Commodities"
-        static let fiats = "Fiats"
+        static let all = "all".localize()
+        static let cryptocoins = "cryptocoins".localize()
+        static let commodities = "commodities".localize()
+        static let fiats = "fiats".localize()
     }
 }

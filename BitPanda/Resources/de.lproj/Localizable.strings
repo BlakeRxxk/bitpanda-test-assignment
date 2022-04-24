@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  BitPanda
+
+  Created by Oleg Kurgaev on 24.04.2022.
+  
+*/
+
+"assets" = "Vermögen";
+"fiatWallet" ="Fiat-Geldbörse";
+"wallet" = "Brieftasche";
+"wallets" = "Brieftaschen";
+"pending" = "Ausstehende Transaktionen:";
+"all" = "Alle";
+"cryptocoins" = "Kryptomünzen";
+"commodities" = "Waren";
+"fiats" = "Gebote";

@@ -11,7 +11,7 @@ import Combine
 import UIKit
 
 private typealias AssetsDataSource = UICollectionViewDiffableDataSource<AssetView.Section, AssetCellModel>
-private typealias Snapshot = NSDiffableDataSourceSnapshot<AssetView.Section, AssetCellModel>
+private typealias AssetsSnapshot = NSDiffableDataSourceSnapshot<AssetView.Section, AssetCellModel>
 
 // MARK: - AssetsViewController
 
@@ -68,7 +68,7 @@ public class AssetsViewController: ViewController<AssetView> {
             collectionView: collectionView,
             cellProvider: cellProvider)
 
-        var snapshot = Snapshot()
+        var snapshot = AssetsSnapshot()
         snapshot.appendSections([AssetView.Section.main])
         snapshot.appendItems(assets)
     }
@@ -99,7 +99,7 @@ public class AssetsViewController: ViewController<AssetView> {
     }
 
     private func updateSnapshot(with items: [AssetCellModel]) {
-        var snapshot = Snapshot()
+        var snapshot = AssetsSnapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
         dataSource?.apply(snapshot, animatingDifferences: true)
@@ -147,9 +147,9 @@ extension AssetsViewController: UISearchBarDelegate {
 
 extension AssetsViewController {
     fileprivate enum Localized {
-        static let all = "All"
-        static let cryptocoins = "Cryptocoins"
-        static let commodities = "Commodities"
-        static let fiats = "Fiats"
+        static let all = "all".localize()
+        static let cryptocoins = "cryptocoins".localize()
+        static let commodities = "commodities".localize()
+        static let fiats = "fiats".localize()
     }
 }

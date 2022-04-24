@@ -8,8 +8,8 @@
 import Foundation
 
 public enum FileReader {
-    public static func readJSON(from file: String) -> MainDataWrapper? {
-        guard let path = Bundle.main.path(forResource: file, ofType: "json") else {
+    public static func readJSON(from file: String, bundle: Bundle = Bundle.main) -> MainDataWrapper? {
+        guard let path = bundle.path(forResource: file, ofType: "json") else {
             return nil
         }
 

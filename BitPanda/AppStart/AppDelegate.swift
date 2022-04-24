@@ -40,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Private
 
     private func setupAppearance() {
-        // place for apperance
         UITabBar.appearance().barTintColor = Theme.Background.tabBar
         UITabBar.appearance().tintColor = Theme.Text.primary
         UITabBar.appearance().unselectedItemTintColor = Theme.Background.iconInactive

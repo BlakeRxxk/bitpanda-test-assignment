@@ -29,5 +29,6 @@ let package = Package(
             ]),
         .testTarget(
             name: "WalletsFeatureTests",
-            dependencies: ["WalletsFeature"]),
+            dependencies: ["WalletsFeature"],
+            resources: [.copy("Mocks/WalletsMock.json")]),
     ])

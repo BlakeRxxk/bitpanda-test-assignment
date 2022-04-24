@@ -105,7 +105,6 @@ final class AssetRowCell: UICollectionViewCell {
         darkLogo = model.darkLogo
         lightLogo = model.lightLogo
         amount.text = model.amount
-        loadImage()
     }
 }
 

@@ -10,6 +10,161 @@ import Foundation
 extension Commodity {
     public struct Attributes: Codable {
 
+        // MARK: Lifecycle
+
+        public init(
+            symbol: String,
+            name: String,
+            sort: Int,
+            assetTypeName: Commodity.AssetType,
+            assetGroupName: Commodity.AssetGroup,
+            urlCheckAddress: String,
+            urlCheckTransaction: String,
+            buyActive: Bool,
+            sellActive: Bool,
+            withdrawActive: Bool,
+            depositActive: Bool,
+            transferActive: Bool,
+            available: Bool,
+            maintenanceEnabled: Bool,
+            minBuyEur: String,
+            minSellEur: String,
+            minWithdrawEur: String,
+            defaultSellAmount: String,
+            precisionForFiatPrice: Int,
+            precisionForCoins: Int,
+            precisionForTx: Int,
+            walletMinDeposit: String,
+            walletSmallDeposit: String,
+            walletSmallDepositFee: String,
+            avgPrice: String,
+            color: String,
+            walletWithdrawFee: String,
+            change24H: String,
+            change24HAmount: String,
+            change1W: String,
+            change1WAmount: String,
+            change1M: String,
+            change1MAmount: String,
+            change1Y: String,
+            change1YAmount: String,
+            logo: String,
+            logoDark: String,
+            supportDestinationTag: Bool,
+            circulatingSupply: String?,
+            allowedUnverified: Bool,
+            allowedDocumented: Bool,
+            allowedVerified: Bool,
+            measurementUnit: String?,
+            ieoPhases: [IeoPhase?],
+            info: String,
+            unavailableReason: String,
+            maintenanceReason: String,
+            walletInfo: String,
+            extraInfo: String,
+            infoIntegration: String,
+            infoDeu: String,
+            infoEng: String,
+            infoFra: String,
+            unavailableReasonDeu: String,
+            unavailableReasonEng: String,
+            unavailableReasonFra: String,
+            maintenanceReasonDeu: String,
+            maintenanceReasonEng: String,
+            maintenanceReasonFra: String,
+            walletInfoDeu: String,
+            walletInfoEng: String,
+            walletInfoFra: String,
+            extraInfoDeu: String,
+            extraInfoEng: String,
+            extraInfoFra: String,
+            infoIntegrationDeu: String,
+            infoIntegrationEng: String,
+            infoIntegrationFra: String,
+            investmentInfo: String?,
+            investmentInfoDeu: String?,
+            investmentInfoEng: String?,
+            investmentInfoFra: String?,
+            androidSupportedVersion: String?,
+            iosSupportedVersion: String?,
+            family: Commodity.Attributes.Family?) {
+            self.symbol = symbol
+            self.name = name
+            self.sort = sort
+            self.assetTypeName = assetTypeName
+            self.assetGroupName = assetGroupName
+            self.urlCheckAddress = urlCheckAddress
+            self.urlCheckTransaction = urlCheckTransaction
+            self.buyActive = buyActive
+            self.sellActive = sellActive
+            self.withdrawActive = withdrawActive
+            self.depositActive = depositActive
+            self.transferActive = transferActive
+            self.available = available
+            self.maintenanceEnabled = maintenanceEnabled
+            self.minBuyEur = minBuyEur
+            self.minSellEur = minSellEur
+            self.minWithdrawEur = minWithdrawEur
+            self.defaultSellAmount = defaultSellAmount
+            self.precisionForFiatPrice = precisionForFiatPrice
+            self.precisionForCoins = precisionForCoins
+            self.precisionForTx = precisionForTx
+            self.walletMinDeposit = walletMinDeposit
+            self.walletSmallDeposit = walletSmallDeposit
+            self.walletSmallDepositFee = walletSmallDepositFee
+            self.avgPrice = avgPrice
+            self.color = color
+            self.walletWithdrawFee = walletWithdrawFee
+            self.change24H = change24H
+            self.change24HAmount = change24HAmount
+            self.change1W = change1W
+            self.change1WAmount = change1WAmount
+            self.change1M = change1M
+            self.change1MAmount = change1MAmount
+            self.change1Y = change1Y
+            self.change1YAmount = change1YAmount
+            self.logo = logo
+            self.logoDark = logoDark
+            self.supportDestinationTag = supportDestinationTag
+            self.circulatingSupply = circulatingSupply
+            self.allowedUnverified = allowedUnverified
+            self.allowedDocumented = allowedDocumented
+            self.allowedVerified = allowedVerified
+            self.measurementUnit = measurementUnit
+            self.ieoPhases = ieoPhases
+            self.info = info
+            self.unavailableReason = unavailableReason
+            self.maintenanceReason = maintenanceReason
+            self.walletInfo = walletInfo
+            self.extraInfo = extraInfo
+            self.infoIntegration = infoIntegration
+            self.infoDeu = infoDeu
+            self.infoEng = infoEng
+            self.infoFra = infoFra
+            self.unavailableReasonDeu = unavailableReasonDeu
+            self.unavailableReasonEng = unavailableReasonEng
+            self.unavailableReasonFra = unavailableReasonFra
+            self.maintenanceReasonDeu = maintenanceReasonDeu
+            self.maintenanceReasonEng = maintenanceReasonEng
+            self.maintenanceReasonFra = maintenanceReasonFra
+            self.walletInfoDeu = walletInfoDeu
+            self.walletInfoEng = walletInfoEng
+            self.walletInfoFra = walletInfoFra
+            self.extraInfoDeu = extraInfoDeu
+            self.extraInfoEng = extraInfoEng
+            self.extraInfoFra = extraInfoFra
+            self.infoIntegrationDeu = infoIntegrationDeu
+            self.infoIntegrationEng = infoIntegrationEng
+            self.infoIntegrationFra = infoIntegrationFra
+            self.investmentInfo = investmentInfo
+            self.investmentInfoDeu = investmentInfoDeu
+            self.investmentInfoEng = investmentInfoEng
+            self.investmentInfoFra = investmentInfoFra
+            self.androidSupportedVersion = androidSupportedVersion
+            self.iosSupportedVersion = iosSupportedVersion
+            self.family = family
+        }
+
         // MARK: Public
 
         public let symbol: String
@@ -167,6 +322,5 @@ extension Commodity {
             case iosSupportedVersion = "ios_supported_version"
             case family
         }
-
     }
 }

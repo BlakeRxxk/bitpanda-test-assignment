@@ -77,7 +77,6 @@ class WalletDetailRowCell: UICollectionViewCell {
 
             headline.leading.constraint(equalTo: image.trailing),
             headline.centerY.constraint(equalTo: contentView.centerY),
-            headline.trailing.constraint(equalTo: amount.trailing),
 
             amount.centerY.constraint(equalTo: contentView.centerY),
             amount.trailing.constraint(equalTo: contentView.trailing, constant: -Spacing.x16),

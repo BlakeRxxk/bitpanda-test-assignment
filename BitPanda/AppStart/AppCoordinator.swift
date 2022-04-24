@@ -35,14 +35,14 @@ final class AppCoordinator: PresentationCoordinator {
         walletsCoordinator
             .rootViewController
             .tabBarItem = UITabBarItem(
-                title: Localized.assets,
+                title: Localized.wallets,
                 image: UIImage.wallet,
                 tag: 0)
 
         assetsCoordinator
             .rootViewController
             .tabBarItem = UITabBarItem(
-                title: Localized.wallets,
+                title: Localized.assets,
                 image: UIImage.assets,
                 tag: 1)
         attachChild(assetsCoordinator)
@@ -61,7 +61,7 @@ final class AppCoordinator: PresentationCoordinator {
 
 extension AppCoordinator {
     fileprivate enum Localized {
-        static let assets = "Assets"
-        static let wallets = "Wallets"
+        static let assets = "assets".localize()
+        static let wallets = "wallets".localize()
     }
 }

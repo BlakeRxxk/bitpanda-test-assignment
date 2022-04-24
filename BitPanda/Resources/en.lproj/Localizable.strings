@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  BitPanda
+
+  Created by Oleg Kurgaev on 24.04.2022.
+  
+*/
+
+"assets" = "Assets";
+"fiatWallet" = "Fiat Wallet";
+"wallet" = "Wallet";
+"wallets" = "Wallets";
+"pending" = "Pending transactions:";
+"all" = "All";
+"cryptocoins" = "Cryptocoins";
+"commodities" = "Commodities";
+"fiats" = "Fiats";

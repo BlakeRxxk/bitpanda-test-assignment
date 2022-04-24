@@ -5,6 +5,7 @@
 //  Created by Oleg Kurgaev on 23.04.2022.
 //
 
+import BitPandaCore
 import Foundation
 
 // MARK: - WalletsDetailViewModel
@@ -32,17 +33,24 @@ public final class WalletsDetailViewModel {
 
         switch type {
         case .fiat:
+            let precision = service.fetchFiat(with: selectedID)?.attributes.precision ?? 2
+
             data = service.fetchFiatWallets()
                 .filter { $0.attributes.fiatID == selectedID }
-                .map { WalletDetailRowCellModel(from: $0) }
+                .map { WalletDetailRowCellModel(from: $0, precision: precision) }
         case .cryptocoin:
+
+            let precision = service.fetchCryptocoin(with: selectedID)?.attributes.precisionForFiatPrice ?? 4
+
             data = service.fetchWallets()
                 .filter { $0.attributes.cryptocoinID == selectedID }
-                .map { WalletDetailRowCellModel(from: $0) }
+                .map { WalletDetailRowCellModel(from: $0, precision: precision) }
         case .commodity:
+            let precision = service.fetchCommodity(with: selectedID)?.attributes.precisionForFiatPrice ?? 4
+
             data = service.fetchCommodityWallets()
                 .filter { $0.attributes.cryptocoinID == selectedID }
-                .map { WalletDetailRowCellModel(from: $0) }
+                .map { WalletDetailRowCellModel(from: $0, precision: precision) }
         }
 
         dataSource = data
@@ -57,14 +65,6 @@ public final class WalletsDetailViewModel {
 
 extension WalletsDetailViewModel {
     fileprivate enum Localized {
-        static let title = "Wallets"
+        static let title = "wallets".localize()
     }
-}
-
-// MARK: - WalletsDetailViewDataPass
-
-public struct WalletsDetailViewDataPass {
-    public let title: String
-    public let selected: String
-    public let type: WalletGroupsCell.CellType
 }

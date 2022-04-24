@@ -12,8 +12,8 @@ import WalletsFeature
 // MARK: - DependencyContainer
 
 class DependencyContainer {
-//    lazy var networkManager: NetworkManager = NetworkManager()
-
+    lazy var assetsService: AssetsServiceProtocol = AssetsService()
+    lazy var walletsService: WalletsServiceProtocol = WalletsService()
 }
 
 // MARK: AssetsFactory
@@ -24,8 +24,7 @@ extension DependencyContainer: AssetsFactory {
     }
 
     func makeAssetsViewController() -> AssetsViewController {
-        let service = AssetsService()
-        let viewModel = AssetsViewModel(service: service)
+        let viewModel = AssetsViewModel(service: assetsService)
         return AssetsViewController(viewModel: viewModel)
     }
 }
@@ -34,10 +33,9 @@ extension DependencyContainer: AssetsFactory {
 
 extension DependencyContainer: WalletsFactory {
     func makeWalletsDetailView(_ passData: WalletsDetailViewDataPass) -> WalletsDetailViewController {
-        let service = WalletsService()
         let viewModel = WalletsDetailViewModel(
             dataPass: passData,
-            service: service)
+            service: walletsService)
         return WalletsDetailViewController(viewModel: viewModel)
     }
 
@@ -46,8 +44,7 @@ extension DependencyContainer: WalletsFactory {
     }
 
     func makeWalletsViewController() -> WalletsViewController {
-        let service = WalletsService()
-        let viewModel = WalletsViewModel(service: service)
+        let viewModel = WalletsViewModel(service: walletsService)
         return WalletsViewController(viewModel: viewModel)
     }
 

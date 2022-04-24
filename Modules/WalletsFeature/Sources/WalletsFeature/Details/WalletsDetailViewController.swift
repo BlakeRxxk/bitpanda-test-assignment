@@ -105,35 +105,3 @@ public class WalletsDetailViewController: ViewController<WalletsDetailView> {
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
-
-// MARK: - WalletDetailRowCellModel
-
-struct WalletDetailRowCellModel: Hashable, Equatable {
-
-    // MARK: Lifecycle
-
-    init(from model: Wallet) {
-        title = model.attributes.name
-        caption = "Pending transactions: \(model.attributes.pendingTransactionsCount)"
-        amount = NumberFactory
-            .rawToMoneyString(
-                value: model.attributes.balance,
-                precision: 8)
-    }
-
-    init(from model: FiatWallet) {
-        title = model.attributes.name
-        caption = "Pending transactions: \(model.attributes.pendingTransactionsCount)"
-        amount = NumberFactory
-            .rawToMoneyString(
-                value: model.attributes.balance,
-                precision: 4)
-    }
-
-    // MARK: Internal
-
-    let title: String
-    let caption: String
-    let amount: String
-
-}

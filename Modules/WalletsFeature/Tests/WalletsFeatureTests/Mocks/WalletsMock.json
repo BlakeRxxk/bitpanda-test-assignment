@@ -1,0 +1,307 @@
+{
+  "data": {
+    "type": "collection",
+    "attributes": {
+      "cryptocoins": [
+        {
+          "type": "cryptocoin",
+          "attributes": {
+            "symbol": "BTC",
+            "name": "Bitcoin",
+            "sort": 10,
+            "asset_type_name": "cryptocoin",
+            "asset_group_name": "coin",
+            "url_check_address": "https://www.blockchain.com/btc/address/%s",
+            "url_check_transaction": "https://www.blockchain.com/btc/tx/%s",
+            "buy_active": true,
+            "sell_active": true,
+            "withdraw_active": true,
+            "deposit_active": true,
+            "transfer_active": true,
+            "available": true,
+            "maintenance_enabled": false,
+            "min_buy_eur": "0.06",
+            "min_sell_eur": "1",
+            "min_withdraw_eur": "8.94",
+            "default_sell_amount": "1",
+            "precision_for_fiat_price": 2,
+            "precision_for_coins": 4,
+            "precision_for_tx": 8,
+            "wallet_min_deposit": "0.05000000",
+            "wallet_small_deposit": "0.05000000",
+            "wallet_small_deposit_fee": "0.00010000",
+            "avg_price": "8936.50",
+            "color": "#F7931A",
+            "wallet_withdraw_fee": "0.0000300000000000",
+            "change_24h": "-3.0714208301723",
+            "change_24h_amount": "-283.18",
+            "change_1w": "5.946739954511",
+            "change_1w_amount": "501.60",
+            "change_1m": "23.066338254923",
+            "change_1m_amount": "1674.97",
+            "change_1y": "179.11244265518",
+            "change_1y_amount": "5734.74",
+            "logo": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/cryptocoin/btc.svg",
+            "logo_dark": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/cryptocoin/btc_dark.svg",
+            "support_destination_tag": false,
+            "android_supported_version": "0.0.1",
+            "ios_supported_version": "1.0.0",
+            "circulating_supply": "18209712.00000000",
+            "allowed_unverified": false,
+            "allowed_documented": true,
+            "allowed_verified": true,
+            "ieo_phases": [],
+            "info": "",
+            "unavailable_reason": "Wallet under maintenance due to an update. We are working hard to bring it back online as soon as possible.",
+            "maintenance_reason": "BTC wallets are in maintenance and currently set to trade only (buy and sell). We are working hard to bring them back online as soon as possible.",
+            "wallet_info": "",
+            "extra_info": "",
+            "investment_info": "",
+            "info_integration": "",
+            "info_deu": "",
+            "info_eng": "",
+            "info_fra": "",
+            "unavailable_reason_deu": "Aufgrund eines Updates befindet sich die Wallet im Wartungsmodus. Wir bemühen uns die Wallet so schnell wie möglich wieder online zu bringen.",
+            "unavailable_reason_eng": "Wallet under maintenance due to an update. We are working hard to bring it back online as soon as possible.",
+            "unavailable_reason_fra": "Wallet en maintenance en raison d'une mise à jour. Nous travaillons pour le remettre en ligne dès que possible.",
+            "maintenance_reason_deu": "BTC Wallets befinden sich zur Zeit im Wartungsmodus und sind auf Trade Only (Kaufen und verkaufen) eingestellt. Wir bemühen uns die Wallets so schnell wie möglich wieder online zu bringen.",
+            "maintenance_reason_eng": "BTC wallets are in maintenance and currently set to trade only (buy and sell). We are working hard to bring them back online as soon as possible.",
+            "maintenance_reason_fra": "Les BTC wallets sont en cours de maintenance et actuellement disponibles qu'en trade only (achat et vente). Nous travaillons pour les remettre en ligne dès que possible.",
+            "wallet_info_deu": "",
+            "wallet_info_eng": "",
+            "wallet_info_fra": "",
+            "extra_info_deu": "",
+            "extra_info_eng": "",
+            "extra_info_fra": "",
+            "investment_info_deu": "",
+            "investment_info_eng": "",
+            "investment_info_fra": "",
+            "info_integration_deu": "",
+            "info_integration_eng": "",
+            "info_integration_fra": ""
+          },
+          "id": "1"
+        },
+      ],
+      "commodities": [
+        {
+          "type": "commodity",
+          "attributes": {
+            "symbol": "XPT",
+            "name": "Platinum",
+            "sort": 230,
+            "asset_type_name": "commodity",
+            "asset_group_name": "metal",
+            "url_check_address": "",
+            "url_check_transaction": "",
+            "buy_active": true,
+            "sell_active": true,
+            "withdraw_active": false,
+            "deposit_active": false,
+            "transfer_active": true,
+            "available": true,
+            "maintenance_enabled": false,
+            "min_buy_eur": "1",
+            "min_sell_eur": "1",
+            "min_withdraw_eur": "0.00",
+            "default_sell_amount": "1",
+            "precision_for_fiat_price": 2,
+            "precision_for_coins": 4,
+            "precision_for_tx": 8,
+            "wallet_min_deposit": "0.00000000",
+            "wallet_small_deposit": "0.00000000",
+            "wallet_small_deposit_fee": "0.00000000",
+            "avg_price": "28.50",
+            "color": "#BCAA95",
+            "wallet_withdraw_fee": "0.0000000000000000",
+            "change_24h": "0.46204668470907",
+            "change_24h_amount": "0.13",
+            "change_1w": "2.909156330768",
+            "change_1w_amount": "0.81",
+            "change_1m": "0.59888408200713",
+            "change_1m_amount": "0.17",
+            "change_1y": "25.700922230355",
+            "change_1y_amount": "5.83",
+            "logo": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/cryptocoin/xpt.svg",
+            "logo_dark": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/cryptocoin/xpt_dark.svg",
+            "support_destination_tag": false,
+            "allowed_unverified": false,
+            "allowed_documented": true,
+            "allowed_verified": true,
+            "measurement_unit": "g",
+            "ieo_phases": [],
+            "info": "",
+            "unavailable_reason": "",
+            "maintenance_reason": "",
+            "wallet_info": "",
+            "extra_info": "",
+            "investment_info": "",
+            "info_integration": "",
+            "info_deu": "",
+            "info_eng": "",
+            "info_fra": "",
+            "unavailable_reason_deu": "",
+            "unavailable_reason_eng": "",
+            "unavailable_reason_fra": "",
+            "maintenance_reason_deu": "",
+            "maintenance_reason_eng": "",
+            "maintenance_reason_fra": "",
+            "wallet_info_deu": "",
+            "wallet_info_eng": "",
+            "wallet_info_fra": "",
+            "extra_info_deu": "",
+            "extra_info_eng": "",
+            "extra_info_fra": "",
+            "investment_info_deu": "",
+            "investment_info_eng": "",
+            "investment_info_fra": "",
+            "info_integration_deu": "",
+            "info_integration_eng": "",
+            "info_integration_fra": ""
+          },
+          "id": "36"
+        }
+      ],
+      "fiats": [
+        {
+          "type": "fiat",
+          "attributes": {
+            "symbol": "EUR",
+            "name": "Euro",
+            "precision": 2,
+            "to_eur_rate": "1.00000000",
+            "default_sell_amount": "100",
+            "numeric_character_reference": "&#x020AC;",
+            "min_withdraw_euro": "25.00000000",
+            "symbol_character": "€",
+            "has_wallets": true,
+            "logo": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/fiat/eur.svg",
+            "logo_dark": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/fiat/eur_dark.svg",
+            "logo_white": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/fiat/eur_white.svg",
+            "logo_color": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/fiat/eur_color.svg",
+            "name_deu": "Euro",
+            "name_eng": "Euro",
+            "name_fra": "Euro"
+          },
+          "id": "1"
+        },
+        {
+          "type": "fiat",
+          "attributes": {
+            "symbol": "USD",
+            "name": "US Dollar",
+            "precision": 2,
+            "to_eur_rate": "0.91314200",
+            "default_sell_amount": "100",
+            "numeric_character_reference": "&#x00024;",
+            "min_withdraw_euro": "25.00000000",
+            "symbol_character": "$",
+            "has_wallets": true,
+            "logo": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/fiat/usd.svg",
+            "logo_dark": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/fiat/usd_dark.svg",
+            "logo_white": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/fiat/usd_white.svg",
+            "logo_color": "https://bitpanda-assets.s3-eu-west-1.amazonaws.com/static/fiat/usd_color.svg",
+            "name_deu": "US Dollar",
+            "name_eng": "US Dollar",
+            "name_fra": "Dollar US"
+          },
+          "id": "2"
+        },
+
+      ],
+      "wallets": [
+        {
+          "type": "wallet",
+          "attributes": {
+            "cryptocoin_id": "1",
+            "cryptocoin_symbol": "BTC",
+            "balance": "2.26908585",
+            "is_default": true,
+            "name": "BTC Wallet",
+            "pending_transactions_count": 30,
+            "deleted": false
+          },
+          "id": "d07f4647-69af-4e78-af57-9053ce3d1994"
+        },
+        {
+          "type": "wallet",
+          "attributes": {
+            "cryptocoin_id": "1",
+            "cryptocoin_symbol": "BTC",
+            "balance": "0.00000000",
+            "is_default": false,
+            "name": "btc 2",
+            "pending_transactions_count": 0,
+            "deleted": true
+          },
+          "id": "7ae7f438-0e30-4154-9119-39d279b57f49"
+        },
+        {
+          "type": "wallet",
+          "attributes": {
+            "cryptocoin_id": "1",
+            "cryptocoin_symbol": "BTC",
+            "balance": "0.00000000",
+            "is_default": false,
+            "name": "BTC Wallet to be deleted",
+            "pending_transactions_count": 0,
+            "deleted": true
+          },
+          "id": "e508005b-f715-4198-b09e-136c9533b6b7"
+        },
+      ],
+      "commodity_wallets": [
+        {
+          "type": "wallet",
+          "attributes": {
+            "cryptocoin_id": "36",
+            "cryptocoin_symbol": "XPT",
+            "balance": "22.13979775",
+            "is_default": true,
+            "name": "Platinum Wallet 124",
+            "pending_transactions_count": 0,
+            "deleted": false
+          },
+          "id": "1bb56725-bd17-480e-8009-7f01def6dac5"
+        },
+        {
+          "type": "wallet",
+          "attributes": {
+            "cryptocoin_id": "36",
+            "cryptocoin_symbol": "XPT",
+            "balance": "0.00000000",
+            "is_default": false,
+            "name": "Platinum Wallet 2",
+            "pending_transactions_count": 0,
+            "deleted": true
+          },
+          "id": "7330a2ef-cc55-411c-bda8-2014b7579ccc"
+        }
+      ],
+      "fiatwallets": [
+        {
+          "type": "fiat_wallet",
+          "attributes": {
+            "fiat_id": "1",
+            "fiat_symbol": "EUR",
+            "balance": "74.63000000",
+            "name": "EUR Wallet",
+            "pending_transactions_count": 1
+          },
+          "id": "4fc17f23-83e8-4974-a149-569fdad72a81"
+        },
+        {
+          "type": "fiat_wallet",
+          "attributes": {
+            "fiat_id": "2",
+            "fiat_symbol": "USD",
+            "balance": "502.28000000",
+            "name": "USD Wallet",
+            "pending_transactions_count": 0
+          },
+          "id": "f659a16f-363e-4e77-81ec-699c9cb0cc3b"
+        },
+      ]
+    }
+  }
+}

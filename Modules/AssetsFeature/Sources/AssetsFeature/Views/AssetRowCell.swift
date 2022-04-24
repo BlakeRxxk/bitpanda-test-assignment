@@ -73,6 +73,7 @@ final class AssetRowCell: UICollectionViewCell {
         amount.font = UIFont.Body.Size16.medium
         amount.textColor = Theme.Text.primary
         contentView.layer.cornerRadius = CornerRadius.x12
+        contentView.layer.cornerCurve = .continuous
     }
 
     private func layout() {

@@ -5,8 +5,8 @@
 //  Created by Oleg Kurgaev on 21.04.2022.
 //
 
-import BitPandaUI
 import BitPandaCore
+import BitPandaUI
 import UIKit
 
 // MARK: - WalletGroupsCell
@@ -62,6 +62,7 @@ public final class WalletGroupsCell: UICollectionViewCell {
 
     private func configureUI() {
         contentView.layer.cornerRadius = CornerRadius.x12
+        contentView.layer.cornerCurve = .continuous
 
         arrow.image = UIImage.Arrow.left
         arrow.tintColor = Theme.Background.iconInactive
@@ -80,7 +81,7 @@ public final class WalletGroupsCell: UICollectionViewCell {
 
             headline.leading.constraint(equalTo: image.trailing),
             headline.centerY.constraint(equalTo: contentView.centerY),
-            
+
             arrow.centerY.constraint(equalTo: contentView.centerY),
             arrow.trailing.constraint(equalTo: contentView.trailing, constant: -Spacing.x16),
 
@@ -103,8 +104,6 @@ public final class WalletGroupsCell: UICollectionViewCell {
         }
     }
 }
-
-
 
 // MARK: HighlightableCell
 

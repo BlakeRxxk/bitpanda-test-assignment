@@ -18,18 +18,18 @@ struct WalletGroupCellModel: Hashable, Equatable {
     let type: WalletGroupsCell.CellType
 
     init(from model: (key: String, value: [Wallet]), isCommodity: Bool = false) {
-        self.type = isCommodity ? .commodity : .cryptocoin
-        self.itemID = model.key
-        self.title = model.value.first?.attributes.cryptocoinSymbol ?? Localized.fallbackTitle
+        type = isCommodity ? .commodity : .cryptocoin
+        itemID = model.key
+        title = model.value.first?.attributes.cryptocoinSymbol ?? Localized.fallbackTitle
         let caption = isCommodity ? Localized.commodity : Localized.cryptocoin
         self.caption = "\(caption). \(Localized.caption) \(model.value.count)"
     }
 
     init(from model: (key: String, value: [FiatWallet])) {
-        self.type = .fiat
-        self.itemID = model.key
-        self.title = model.value.first?.attributes.name ?? Localized.fallbackFiatTitle
-        self.caption = "\(Localized.commodity). \(Localized.caption) \(model.value.count)"
+        type = .fiat
+        itemID = model.key
+        title = model.value.first?.attributes.name ?? Localized.fallbackFiatTitle
+        caption = "\(Localized.commodity). \(Localized.caption) \(model.value.count)"
     }
 }
 
@@ -38,7 +38,7 @@ extension WalletGroupCellModel {
         static let fallbackTitle = "wallet".localize()
         static let fallbackFiatTitle = "fiatWallet".localize()
         static let caption = "wallets".localize()
-        
+
         static let cryptocoin = "cryptocoin".localize()
         static let commodity = "commodity".localize()
         static let fiat = "fiat".localize()

@@ -97,6 +97,7 @@ public final class SVGIcon: View {
     private func configureUI() {
         imageView.backgroundColor = Theme.Background.icon
         imageView.layer.cornerRadius = 20
+        imageView.layer.cornerCurve = .continuous
         imageView.clipsToBounds = true
     }
 

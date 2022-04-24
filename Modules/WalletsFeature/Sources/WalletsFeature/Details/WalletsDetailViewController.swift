@@ -31,7 +31,6 @@ public class WalletsDetailViewController: ViewController<WalletsDetailView> {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
 
         configureDataSource()
         setupBindings()

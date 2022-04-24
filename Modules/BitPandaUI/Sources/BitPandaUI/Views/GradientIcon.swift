@@ -57,6 +57,7 @@ public final class GradientIcon: View {
 
     private func configureUI() {
         layer.cornerRadius = CornerRadius.x8
+        layer.cornerCurve = .continuous
         clipsToBounds = true
         gradientView.fromColor = Theme.GradientPrimary.from
         gradientView.toColor = Theme.GradientPrimary.to

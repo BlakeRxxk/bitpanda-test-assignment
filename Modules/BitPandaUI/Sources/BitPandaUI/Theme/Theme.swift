@@ -56,6 +56,15 @@ public enum Theme {
         public static let constantWhite: UIColor = .dynamicColor(
             light: UIColor(red: 0.988, green: 0.988, blue: 0.988, alpha: 1),
             dark: UIColor(red: 0.988, green: 0.988, blue: 0.988, alpha: 1))
+
+        public static let alert: UIColor = .dynamicColor(
+            light: UIColor(red: 1, green: 0.333, blue: 0.29, alpha: 1),
+            dark: UIColor(red: 1, green: 0.333, blue: 0.29, alpha: 1))
+
+        public static let warning: UIColor = .dynamicColor(
+            light: UIColor(red: 0.758, green: 0.804, blue: 0.224, alpha: 1),
+            dark: UIColor(red: 0.758, green: 0.804, blue: 0.224, alpha: 1))
+
     }
 
     public enum GradientPrimary {

@@ -59,6 +59,8 @@ class WalletDetailRowCell: UICollectionViewCell {
 
     private func configureUI() {
         contentView.layer.cornerRadius = CornerRadius.x12
+        contentView.layer.cornerCurve = .continuous
+
         amount.font = UIFont.Body.Size16.medium
         amount.textColor = Theme.Text.primary
         image.icon = UIImage.wallet
@@ -91,6 +93,12 @@ class WalletDetailRowCell: UICollectionViewCell {
         headline.title = model.title
         headline.caption = model.caption
         amount.text = model.amount
+        if model.isDefault {
+            contentView.layer.addBorder(
+                edge: .right,
+                color: Theme.Background.warning,
+                thickness: Spacing.x4)
+        }
     }
 
 }

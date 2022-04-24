@@ -12,6 +12,9 @@
 "wallets" = "Brieftaschen";
 "pending" = "Ausstehende Transaktionen:";
 "all" = "Alle";
+"cryptocoin" = "Kryptomünze";
 "cryptocoins" = "Kryptomünzen";
+"commodity" = "Ware";
 "commodities" = "Waren";
-"fiats" = "Gebote";
+"fiat" = "Fiatgeld";
+"fiats" = "Fiatgeld";

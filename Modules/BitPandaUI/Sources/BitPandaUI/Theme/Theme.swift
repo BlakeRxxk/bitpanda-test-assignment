@@ -80,15 +80,4 @@ public enum Theme {
 
     }
 
-    public enum GradientAccent {
-        public static let from: UIColor = .dynamicColor(
-            light: UIColor(red: 0.29, green: 1, blue: 0.529, alpha: 1),
-            dark: UIColor(red: 0.29, green: 1, blue: 0.529, alpha: 1))
-
-        public static let to: UIColor = .dynamicColor(
-            light: UIColor(red: 0.051, green: 0.161, blue: 0.90, alpha: 1),
-            dark: UIColor(red: 0.110, green: 0.257, blue: 0.196, alpha: 1))
-
-    }
-
 }

@@ -6,6 +6,7 @@
 //
 
 import BitPandaUI
+import BitPandaCore
 import UIKit
 
 // MARK: - WalletGroupsCell
@@ -79,7 +80,7 @@ public final class WalletGroupsCell: UICollectionViewCell {
 
             headline.leading.constraint(equalTo: image.trailing),
             headline.centerY.constraint(equalTo: contentView.centerY),
-
+            
             arrow.centerY.constraint(equalTo: contentView.centerY),
             arrow.trailing.constraint(equalTo: contentView.trailing, constant: -Spacing.x16),
 
@@ -100,10 +101,10 @@ public final class WalletGroupsCell: UICollectionViewCell {
         case .fiat:
             image.icon = UIImage.fiat
         }
-
     }
-
 }
+
+
 
 // MARK: HighlightableCell
 

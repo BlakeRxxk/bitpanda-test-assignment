@@ -35,12 +35,6 @@ public final class GradientIcon: View {
         }
     }
 
-    public var gradientColor: (UIColor, UIColor) = (Theme.GradientPrimary.from, Theme.GradientPrimary.to) {
-        didSet {
-            updateView()
-        }
-    }
-
     public var imageTintColor: UIColor = Theme.Background.constantWhite {
         didSet {
             updateView()
@@ -64,6 +58,8 @@ public final class GradientIcon: View {
     private func configureUI() {
         layer.cornerRadius = CornerRadius.x8
         clipsToBounds = true
+        gradientView.fromColor = Theme.GradientPrimary.from
+        gradientView.toColor = Theme.GradientPrimary.to
         updateView()
     }
 
@@ -84,8 +80,6 @@ public final class GradientIcon: View {
     }
 
     private func updateView() {
-        gradientView.fromColor = gradientColor.0
-        gradientView.toColor = gradientColor.1
         imageView.tintColor = imageTintColor
     }
 }

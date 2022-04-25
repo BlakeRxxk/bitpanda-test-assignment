@@ -1,6 +1,6 @@
 # bitpanda-test-assignment
 
-Hi, this is my implementation of a test assignment app. I tried to keep the app light and fulfill all conditions.
+Hi, this is my implementation of the test assignment app. I tried to keep the app light and fulfill all conditions.
 
 ## About the app:
  - deployment target iOS 13.0

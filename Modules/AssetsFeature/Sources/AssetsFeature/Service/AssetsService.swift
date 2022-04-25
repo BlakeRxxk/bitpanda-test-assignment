@@ -27,17 +27,17 @@ public class AssetsService: AssetsServiceProtocol {
     // MARK: Public
 
     public func fetchCryptocoins() -> [Commodity] {
-        let data = FileReader.readJSON(from: "Masterdata")
-        return data!.data.attributes.cryptocoins
+        guard let data = FileReader.readJSON(from: "Masterdata") else { return [] }
+        return data.data.attributes.cryptocoins
     }
 
     public func fetchCommodities() -> [Commodity] {
-        let data = FileReader.readJSON(from: "Masterdata")
-        return data!.data.attributes.commodities
+        guard let data = FileReader.readJSON(from: "Masterdata") else { return [] }
+        return data.data.attributes.commodities
     }
 
     public func fetchFiats() -> [Fiat] {
-        let data = FileReader.readJSON(from: "Masterdata")
-        return data!.data.attributes.fiats.filter { $0.attributes.hasWallets }
+        guard let data = FileReader.readJSON(from: "Masterdata") else { return [] }
+        return data.data.attributes.fiats.filter { $0.attributes.hasWallets }
     }
 }

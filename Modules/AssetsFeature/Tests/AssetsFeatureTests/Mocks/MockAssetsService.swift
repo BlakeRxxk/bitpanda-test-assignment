@@ -11,17 +11,17 @@ import Foundation
 
 class MockAssetsService: AssetsServiceProtocol {
     func fetchCryptocoins() -> [Commodity] {
-        let data = FileReader.readJSON(from: "AssetsMock", bundle: .module)
-        return data!.data.attributes.cryptocoins
+        guard let data = FileReader.readJSON(from: "AssetsMock", bundle: .module) else { return [] }
+        return data.data.attributes.cryptocoins
     }
 
     func fetchCommodities() -> [Commodity] {
-        let data = FileReader.readJSON(from: "AssetsMock", bundle: .module)
-        return data!.data.attributes.commodities
+        guard let data = FileReader.readJSON(from: "AssetsMock", bundle: .module) else { return [] }
+        return data.data.attributes.commodities
     }
 
     func fetchFiats() -> [Fiat] {
-        let data = FileReader.readJSON(from: "AssetsMock", bundle: .module)
-        return data!.data.attributes.fiats.filter { $0.attributes.hasWallets }
+        guard let data = FileReader.readJSON(from: "AssetsMock", bundle: .module) else { return [] }
+        return data.data.attributes.fiats.filter { $0.attributes.hasWallets }
     }
 }

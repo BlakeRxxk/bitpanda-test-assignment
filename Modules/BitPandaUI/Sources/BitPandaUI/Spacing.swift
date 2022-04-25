@@ -35,5 +35,4 @@ public enum CornerRadius {
     public static let x12: CGFloat = 12
     public static let x16: CGFloat = 16
     public static let x24: CGFloat = 24
-    public static let round: CGFloat = 128
 }

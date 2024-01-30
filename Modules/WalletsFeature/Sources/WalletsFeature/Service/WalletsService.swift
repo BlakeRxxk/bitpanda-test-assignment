@@ -25,7 +25,7 @@ public class WalletsService: WalletsServiceProtocol {
 
     // MARK: Lifecycle
 
-    public init() {}
+    public init() { }
 
     // MARK: Public
 

@@ -44,6 +44,8 @@ struct WalletDetailRowCellModel: Hashable, Equatable {
     let isDefault: Bool
 }
 
+// MARK: WalletDetailRowCellModel.Localized
+
 extension WalletDetailRowCellModel {
     fileprivate enum Localized {
         static let caption = "pending".localize()

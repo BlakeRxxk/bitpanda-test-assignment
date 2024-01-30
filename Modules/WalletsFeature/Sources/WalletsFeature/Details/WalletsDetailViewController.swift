@@ -84,15 +84,15 @@ public class WalletsDetailViewController: ViewController<WalletsDetailView> {
         snapshot.appendItems(wallets)
     }
 
-    private func cellProvider(
-        _ collectionView: UICollectionView,
-        _ indexPath: IndexPath,
-        _ model: WalletDetailRowCellModel)
+    private func cellProvider(_ collectionView: UICollectionView,
+                              _ indexPath: IndexPath,
+                              _ model: WalletDetailRowCellModel)
         -> UICollectionViewCell? {
         guard
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: WalletDetailRowCell.reuseIdentifier,
-                for: indexPath) as? WalletDetailRowCell else { return nil }
+                for: indexPath) as? WalletDetailRowCell
+        else { return nil }
         cell.model = model
         return cell
     }

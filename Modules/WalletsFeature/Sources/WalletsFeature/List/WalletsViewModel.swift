@@ -61,15 +61,15 @@ public final class WalletsViewModel {
         let commodities = service.fetchCommodityWallets()
         let fiats = service.fetchFiatWallets()
         data = Dictionary(grouping: wallets, by: \.attributes.cryptocoinID)
-            .sorted( by: { $0.0 < $1.0 })
-            .map { WalletGroupCellModel(from: $0 ) }
+            .sorted(by: { $0.0 < $1.0 })
+            .map { WalletGroupCellModel(from: $0) }
         let commoditiesModels = Dictionary(grouping: commodities, by: \.attributes.cryptocoinID)
-            .sorted( by: { $0.0 < $1.0 })
-            .map { WalletGroupCellModel(from: $0, isCommodity: true ) }
+            .sorted(by: { $0.0 < $1.0 })
+            .map { WalletGroupCellModel(from: $0, isCommodity: true) }
         data.append(contentsOf: commoditiesModels)
         let fiatModels = Dictionary(grouping: fiats, by: \.attributes.fiatID)
-            .sorted( by: { $0.0 < $1.0 })
-            .map { WalletGroupCellModel(from: $0 ) }
+            .sorted(by: { $0.0 < $1.0 })
+            .map { WalletGroupCellModel(from: $0) }
         data.append(contentsOf: fiatModels)
         cache = data
         dataSource = data
@@ -83,10 +83,12 @@ public final class WalletsViewModel {
     private var selectedScope: SearchScope = .all
     private var searchString = ""
 
-    private func applySearch(for item: String, in stack: String ) -> Bool {
+    private func applySearch(for item: String, in stack: String) -> Bool {
         Fuzzy.search(needle: item, haystack: stack)
     }
 }
+
+// MARK: WalletsViewModel.Localized
 
 extension WalletsViewModel {
     fileprivate enum Localized {

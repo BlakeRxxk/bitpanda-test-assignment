@@ -84,7 +84,6 @@ public final class WalletGroupsCell: UICollectionViewCell {
 
             arrow.centerY.constraint(equalTo: contentView.centerY),
             arrow.trailing.constraint(equalTo: contentView.trailing, constant: -Spacing.x16),
-
         ]
 
         NSLayoutConstraint.activate(activeConstraints)
@@ -107,7 +106,9 @@ public final class WalletGroupsCell: UICollectionViewCell {
 
 // MARK: HighlightableCell
 
-extension WalletGroupsCell: HighlightableCell {}
+extension WalletGroupsCell: HighlightableCell { }
+
+// MARK: WalletGroupsCell.CellType
 
 extension WalletGroupsCell {
     public enum CellType: String {

@@ -14,9 +14,8 @@ public final class WalletsDetailViewModel {
 
     // MARK: Lifecycle
 
-    public init(
-        dataPass: WalletsDetailViewDataPass,
-        service: WalletsServiceProtocol) {
+    public init(dataPass: WalletsDetailViewDataPass,
+                service: WalletsServiceProtocol) {
         title = dataPass.title
         selectedID = dataPass.selected
         type = dataPass.type
@@ -62,6 +61,8 @@ public final class WalletsDetailViewModel {
     private let selectedID: String
     private let type: WalletGroupsCell.CellType
 }
+
+// MARK: WalletsDetailViewModel.Localized
 
 extension WalletsDetailViewModel {
     fileprivate enum Localized {

@@ -82,7 +82,6 @@ class WalletDetailRowCell: UICollectionViewCell {
 
             amount.centerY.constraint(equalTo: contentView.centerY),
             amount.trailing.constraint(equalTo: contentView.trailing, constant: -Spacing.x16),
-
         ]
 
         NSLayoutConstraint.activate(activeConstraints)
@@ -105,4 +104,4 @@ class WalletDetailRowCell: UICollectionViewCell {
 
 // MARK: HighlightableCell
 
-extension WalletDetailRowCell: HighlightableCell {}
+extension WalletDetailRowCell: HighlightableCell { }

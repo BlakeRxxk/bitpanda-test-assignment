@@ -90,15 +90,15 @@ public class WalletsViewController: ViewController<WalletsView> {
         snapshot.appendItems(walletGroups)
     }
 
-    private func cellProvider(
-        _ collectionView: UICollectionView,
-        _ indexPath: IndexPath,
-        _ model: WalletGroupCellModel)
+    private func cellProvider(_ collectionView: UICollectionView,
+                              _ indexPath: IndexPath,
+                              _ model: WalletGroupCellModel)
         -> UICollectionViewCell? {
         guard
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: WalletGroupsCell.reuseIdentifier,
-                for: indexPath) as? WalletGroupsCell else { return nil }
+                for: indexPath) as? WalletGroupsCell
+        else { return nil }
         cell.model = model
         return cell
     }
@@ -113,13 +113,12 @@ public class WalletsViewController: ViewController<WalletsView> {
 
 // MARK: SearchableList
 
-extension WalletsViewController: SearchableList {}
+extension WalletsViewController: SearchableList { }
 
 // MARK: UICollectionViewDelegate
 
 extension WalletsViewController: UICollectionViewDelegate {
     public func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         let cell = walletGroups[indexPath.item]
 
         output?.presentDetailView(.init(title: cell.title, selected: cell.itemID, type: cell.type))
@@ -129,7 +128,7 @@ extension WalletsViewController: UICollectionViewDelegate {
 // MARK: UISearchResultsUpdating
 
 extension WalletsViewController: UISearchResultsUpdating {
-    public func updateSearchResults(for _: UISearchController) {}
+    public func updateSearchResults(for _: UISearchController) { }
 }
 
 // MARK: UISearchBarDelegate
@@ -147,6 +146,8 @@ extension WalletsViewController: UISearchBarDelegate {
         viewModel.search(with: "")
     }
 }
+
+// MARK: WalletsViewController.Localized
 
 extension WalletsViewController {
     fileprivate enum Localized {

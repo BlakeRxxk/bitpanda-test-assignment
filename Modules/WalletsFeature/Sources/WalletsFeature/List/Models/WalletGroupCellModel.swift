@@ -33,6 +33,8 @@ struct WalletGroupCellModel: Hashable, Equatable {
     }
 }
 
+// MARK: WalletGroupCellModel.Localized
+
 extension WalletGroupCellModel {
     fileprivate enum Localized {
         static let fallbackTitle = "wallet".localize()

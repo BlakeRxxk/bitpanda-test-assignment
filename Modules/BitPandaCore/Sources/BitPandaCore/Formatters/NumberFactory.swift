@@ -20,7 +20,8 @@ public enum NumberFactory {
 
         guard
             let price = Double(value ?? ""),
-            let result = formatter.string(from: NSNumber(value: price)) else {
+            let result = formatter.string(from: NSNumber(value: price))
+        else {
             return ""
         }
 

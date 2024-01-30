@@ -18,10 +18,9 @@ public struct Commodity: Codable {
         case id
     }
 
-    public init(
-        type: Commodity.AssetType,
-        attributes: Commodity.Attributes,
-        id: String) {
+    public init(type: Commodity.AssetType,
+                attributes: Commodity.Attributes,
+                id: String) {
         self.type = type
         self.attributes = attributes
         self.id = id

@@ -33,10 +33,9 @@ extension PresentationCoordinator {
         rootViewController.present(coordinator.root, animated: animated)
     }
 
-    public func dismiss(
-        _ coordinator: PresentableCoordinator,
-        animated: Bool,
-        completion: (() -> Void)? = nil) {
+    public func dismiss(_ coordinator: PresentableCoordinator,
+                        animated: Bool,
+                        completion: (() -> Void)? = nil) {
         coordinator.root.dismiss(
             animated: animated,
             completion: completion)

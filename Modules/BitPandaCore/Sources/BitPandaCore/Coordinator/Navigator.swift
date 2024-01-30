@@ -84,13 +84,13 @@ extension Navigator {
 // MARK: UINavigationControllerDelegate
 
 extension Navigator: UINavigationControllerDelegate {
-    public func navigationController(
-        _ navigationController: UINavigationController,
-        didShow _: UIViewController,
-        animated _: Bool) {
+    public func navigationController(_ navigationController: UINavigationController,
+                                     didShow _: UIViewController,
+                                     animated _: Bool) {
         guard
             let poppingViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
-            !navigationController.viewControllers.contains(poppingViewController) else {
+            !navigationController.viewControllers.contains(poppingViewController)
+        else {
             return
         }
 

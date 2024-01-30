@@ -16,7 +16,6 @@ public enum FileReader {
         var json: MainDataWrapper?
 
         do {
-
             guard let jsonData = try String(contentsOfFile: path).data(using: .utf8) else {
                 return nil
             }

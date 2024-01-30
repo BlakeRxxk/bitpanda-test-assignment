@@ -29,7 +29,7 @@ public final class GradientView: View {
     private var hasGradient = false
 
     private func updateGradient() {
-        guard frame.size.width != .zero && frame.size.height != .zero && !hasGradient else { return }
+        guard frame.size.width != .zero, frame.size.height != .zero, !hasGradient else { return }
         hasGradient = true
 
         setGradient(colors: [fromColor, toColor], direction: direction, locations: (from, to))

@@ -26,7 +26,6 @@ class SVGDataFetcher {
             if responseError != nil {
                 completion(.failure(SVGDataFetcher.FetcherError.requestFailed))
             } else if let data = responseData {
-
                 PINCache.shared.setObject(data, forKey: url.absoluteString)
                 completion(.success(data))
             } else {

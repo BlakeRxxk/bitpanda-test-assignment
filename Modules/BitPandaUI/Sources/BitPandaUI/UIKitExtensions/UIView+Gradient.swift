@@ -43,10 +43,9 @@ extension UIView {
         }
     }
 
-    public func setGradient(
-        colors: [UIColor],
-        direction: DirectionGradient = .horizontally,
-        locations: (Double, Double) = (0, 1)) {
+    public func setGradient(colors: [UIColor],
+                            direction: DirectionGradient = .horizontally,
+                            locations: (Double, Double) = (0, 1)) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame.size = frame.size
         gradientLayer.colors = colors.map { $0.cgColor }
@@ -56,10 +55,9 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
 
-    public func transactionAnimation(
-        with duration: CFTimeInterval,
-        timingFuncion: CAMediaTimingFunction,
-        animations: () -> Void) {
+    public func transactionAnimation(with duration: CFTimeInterval,
+                                     timingFuncion: CAMediaTimingFunction,
+                                     animations: () -> Void) {
         CATransaction.begin()
         CATransaction.disableActions()
         CATransaction.setAnimationDuration(duration)

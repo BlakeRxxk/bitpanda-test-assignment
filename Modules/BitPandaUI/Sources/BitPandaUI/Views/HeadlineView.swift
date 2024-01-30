@@ -94,4 +94,4 @@ public final class HeadlineView: View {
 
 // MARK: HeadlineViewInput
 
-extension HeadlineView: HeadlineViewInput {}
+extension HeadlineView: HeadlineViewInput { }

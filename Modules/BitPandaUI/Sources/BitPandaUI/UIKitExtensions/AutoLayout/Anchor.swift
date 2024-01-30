@@ -10,11 +10,11 @@ import UIKit.UIView
 
 // MARK: - XAxisAnchor
 
-public class XAxisAnchor: Anchor {}
+public class XAxisAnchor: Anchor { }
 
 // MARK: - YAxisAnchor
 
-public class YAxisAnchor: Anchor {}
+public class YAxisAnchor: Anchor { }
 
 // MARK: - Anchor
 

@@ -36,7 +36,8 @@ public final class SVGIcon: View {
     public func update(with model: SVGIcon.Model) {
         guard
             let darkLogoURL = model.dark,
-            let lightLogoURL = model.light else { return }
+            let lightLogoURL = model.light
+        else { return }
 
         let queue = DispatchQueue(
             label: "com.bitpanda-test.svg.datafetcher",
@@ -50,7 +51,6 @@ public final class SVGIcon: View {
                     self?.lightLogo = SVGKImage(data: data)
                 default: break
                 }
-
             }
         }
 
@@ -61,7 +61,6 @@ public final class SVGIcon: View {
                     self?.darkLogo = SVGKImage(data: data)
                 default: break
                 }
-
             }
         }
     }
@@ -116,6 +115,5 @@ public final class SVGIcon: View {
         DispatchQueue.main.async { [weak self] in
             self?.imageView.image = self?.traitCollection.userInterfaceStyle == .dark ? self?.darkLogo : self?.lightLogo
         }
-
     }
 }

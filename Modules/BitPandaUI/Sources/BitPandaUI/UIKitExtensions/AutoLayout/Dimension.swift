@@ -40,10 +40,9 @@ public class Dimension: Anchor {
         constraint(greaterThanOrEqualTo: anchor, multiplier: multiplier, constant: 0)
     }
 
-    public func constraint(
-        greaterThanOrEqualTo anchor: Dimension,
-        multiplier: CGFloat,
-        constant: CGFloat)
+    public func constraint(greaterThanOrEqualTo anchor: Dimension,
+                           multiplier: CGFloat,
+                           constant: CGFloat)
         -> NSLayoutConstraint {
         NSLayoutConstraint(
             item: view,
@@ -70,10 +69,9 @@ public class Dimension: Anchor {
         constraint(lessThanOrEqualTo: anchor, multiplier: multiplier, constant: 0)
     }
 
-    public func constraint(
-        lessThanOrEqualTo anchor: Dimension,
-        multiplier: CGFloat,
-        constant: CGFloat)
+    public func constraint(lessThanOrEqualTo anchor: Dimension,
+                           multiplier: CGFloat,
+                           constant: CGFloat)
         -> NSLayoutConstraint {
         NSLayoutConstraint(
             item: view,

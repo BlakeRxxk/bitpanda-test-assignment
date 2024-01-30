@@ -2,8 +2,6 @@
 //  String+Localize.swift
 //  BitPandaCore
 //
-//  Created by Oleg Kurgaev on 24.04.2022.
-//
 
 import Foundation
 

@@ -2,8 +2,6 @@
 //  WalletsCoordinator.swift
 //  BitPanda
 //
-//  Created by Oleg Kurgaev on 18.04.2022.
-//
 
 import BitPandaCore
 import UIKit

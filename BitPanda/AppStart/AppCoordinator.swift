@@ -2,8 +2,6 @@
 //  AppCoordinator.swift
 //  BitPanda
 //
-//  Created by Oleg Kurgaev on 13.04.2022.
-//
 
 import BitPandaCore
 import BitPandaUI

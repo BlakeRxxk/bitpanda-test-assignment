@@ -2,8 +2,6 @@
 //  AppDelegate.swift
 //  BitPanda
 //
-//  Created by Oleg Kurgaev on 12.04.2022.
-//
 
 import BitPandaCore
 import BitPandaUI

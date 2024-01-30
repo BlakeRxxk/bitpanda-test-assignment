@@ -2,8 +2,6 @@
 //  FuzzySearch.swift
 //  BitPandaCore
 //
-//  Created by Oleg Kurgaev on 21.04.2022.
-//
 
 import Foundation
 

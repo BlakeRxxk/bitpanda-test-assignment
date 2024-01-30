@@ -59,6 +59,8 @@ final class AppCoordinator: PresentationCoordinator {
 
 }
 
+// MARK: AppCoordinator.Localized
+
 extension AppCoordinator {
     fileprivate enum Localized {
         static let assets = "assets".localize()

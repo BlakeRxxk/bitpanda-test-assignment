@@ -20,13 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appCoordinator: AppCoordinator?
     var window: UIWindow?
 
-    func application(
-        _: UIApplication,
-        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?)
+    func application(_: UIApplication,
+                     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?)
         -> Bool {
-
         window = UIWindow()
-        guard let window = window else { return false }
+        guard let window else { return false }
         setupCache()
         setupAppearance()
 
@@ -52,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+// MARK: AppDelegate.Constants
 
 extension AppDelegate {
     fileprivate enum Constants {

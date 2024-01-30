@@ -14,7 +14,6 @@ final class AssetsCoordinator: NavigatableCoordinator {
     // MARK: Lifecycle
 
     init(_ container: DependencyContainer) {
-
         assetsViewController = container.makeAssetsViewController()
 
         let navigationController = UINavigationController(rootViewController: assetsViewController)

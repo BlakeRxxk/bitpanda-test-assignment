@@ -111,4 +111,4 @@ final class AssetRowCell: UICollectionViewCell {
 
 // MARK: HighlightableCell
 
-extension AssetRowCell: HighlightableCell {}
+extension AssetRowCell: HighlightableCell { }

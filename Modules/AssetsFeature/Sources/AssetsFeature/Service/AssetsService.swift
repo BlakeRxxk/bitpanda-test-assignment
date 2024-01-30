@@ -22,7 +22,7 @@ public class AssetsService: AssetsServiceProtocol {
 
     // MARK: Lifecycle
 
-    public init () {}
+    public init() { }
 
     // MARK: Public
 

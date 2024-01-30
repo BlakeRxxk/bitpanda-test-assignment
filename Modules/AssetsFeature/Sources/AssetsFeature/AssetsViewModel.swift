@@ -76,10 +76,12 @@ public final class AssetsViewModel {
     private var searchString = ""
     private let service: AssetsServiceProtocol
 
-    private func applySearch(for item: String, in stack: String ) -> Bool {
+    private func applySearch(for item: String, in stack: String) -> Bool {
         Fuzzy.search(needle: item, haystack: stack)
     }
 }
+
+// MARK: AssetsViewModel.Localized
 
 extension AssetsViewModel {
     fileprivate enum Localized {

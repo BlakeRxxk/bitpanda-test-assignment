@@ -33,7 +33,6 @@ public class AssetsViewController: ViewController<AssetView> {
         configureDataSource()
         setupBindings()
         specializedView.collectionView?.delegate = self
-
     }
 
     override public func viewWillAppear(_ animated: Bool) {
@@ -73,15 +72,15 @@ public class AssetsViewController: ViewController<AssetView> {
         snapshot.appendItems(assets)
     }
 
-    private func cellProvider(
-        _ collectionView: UICollectionView,
-        _ indexPath: IndexPath,
-        _ model: AssetCellModel)
+    private func cellProvider(_ collectionView: UICollectionView,
+                              _ indexPath: IndexPath,
+                              _ model: AssetCellModel)
         -> UICollectionViewCell? {
         guard
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: AssetRowCell.reuseIdentifier,
-                for: indexPath) as? AssetRowCell else { return nil }
+                for: indexPath) as? AssetRowCell
+        else { return nil }
         cell.model = model
         return cell
     }
@@ -108,7 +107,7 @@ public class AssetsViewController: ViewController<AssetView> {
 
 // MARK: SearchableList
 
-extension AssetsViewController: SearchableList {}
+extension AssetsViewController: SearchableList { }
 
 // MARK: UICollectionViewDelegate
 
@@ -126,7 +125,7 @@ extension AssetsViewController: UICollectionViewDelegate {
 // MARK: UISearchResultsUpdating
 
 extension AssetsViewController: UISearchResultsUpdating {
-    public func updateSearchResults(for _: UISearchController) {}
+    public func updateSearchResults(for _: UISearchController) { }
 }
 
 // MARK: UISearchBarDelegate
@@ -144,6 +143,8 @@ extension AssetsViewController: UISearchBarDelegate {
         viewModel.search(with: "")
     }
 }
+
+// MARK: AssetsViewController.Localized
 
 extension AssetsViewController {
     fileprivate enum Localized {

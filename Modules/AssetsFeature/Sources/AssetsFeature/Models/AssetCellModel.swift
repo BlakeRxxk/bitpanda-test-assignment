@@ -52,6 +52,8 @@ public struct AssetCellModel: Hashable, Equatable, Identifiable {
     public let amount: String
 }
 
+// MARK: AssetCellModel.CellType
+
 extension AssetCellModel {
     public enum CellType: String {
         case commodity

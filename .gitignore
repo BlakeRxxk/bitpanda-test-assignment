@@ -35,11 +35,18 @@ DerivedData/
 
 ## Obj-C/Swift specific
 *.hmap
+*.xcodeproj
+**/xcuserdata/
+**/*.xcodeproj/
+**/*.xcworkspace/
 
 ## App packaging
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+## For macOS
+.DS_Store
 
 ## Playgrounds
 timeline.xctimeline

@@ -11,43 +11,61 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     // MARK: Internal
-
+    
     var appCoordinator: AppCoordinator?
     var window: UIWindow?
-
+    
     func application(
         _: UIApplication,
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?)
-        -> Bool {
-
+    -> Bool {
+        
         window = UIWindow()
         guard let window = window else { return false }
         setupCache()
         setupAppearance()
-
+        
         let providerFactories = DependencyContainer()
         appCoordinator = AppCoordinator(in: window, with: providerFactories)
         appCoordinator?.start()
-
+        
         return true
     }
-
+    
     // MARK: Private
-
+    
     private func setupAppearance() {
         UITabBar.appearance().barTintColor = Theme.Background.tabBar
         UITabBar.appearance().tintColor = Theme.Text.primary
         UITabBar.appearance().unselectedItemTintColor = Theme.Background.iconInactive
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithDefaultBackground()
+        navigationBarAppearance.backgroundColor = Theme.Background.tabBar
+        navigationBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: Theme.Text.primary,
+            .font: UIFont.Display.small
+        ]
+        navigationBarAppearance.titleTextAttributes = [
+            .foregroundColor: Theme.Text.primary,
+            .font: UIFont.Heading.header2
+        ]
+        
+//        UISearchBar.appearance().tintColor = UIColor(Color.Accents.accent2)
+        
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
     }
-
+    
     private func setupCache() {
-//        PINCache.shared.diskCache.byteLimit = Constants.diskLimit
-//        PINCache.shared.diskCache.ageLimit = Constants.ageLimit
-//        PINCache.shared.memoryCache.ageLimit = Constants.ageLimit
+        //        PINCache.shared.diskCache.byteLimit = Constants.diskLimit
+        //        PINCache.shared.diskCache.ageLimit = Constants.ageLimit
+        //        PINCache.shared.memoryCache.ageLimit = Constants.ageLimit
     }
-
+    
 }
 
 extension AppDelegate {

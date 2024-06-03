@@ -14,13 +14,21 @@ swift_library(
     ],
     data = [
         ":Assets",
-        ":Masterdata"
+        ":Masterdata",
+        ":Fonts"
     ]
 )
 
 apple_resource_group(
-  name = "Assets",
-  resources = glob(["Sources/Resources/Assets.xcassets/**"]),
+    name = "Assets",
+    resources = glob(["Sources/Resources/Assets.xcassets/**"]),
+)
+
+apple_resource_group(
+    name = "Fonts",
+    resources = glob([
+        "Sources/Resources/Fonts/**/*.ttf",
+    ]),
 )
 
 apple_resource_group(

@@ -92,7 +92,7 @@ public class WalletsDetailViewController: ViewController<WalletsDetailView> {
                 withReuseIdentifier: WalletDetailRowCell.reuseIdentifier,
                 for: indexPath) as? WalletDetailRowCell
         else { return nil }
-        
+
         cell.model = model
         return cell
     }

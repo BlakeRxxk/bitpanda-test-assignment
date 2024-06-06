@@ -1,10 +1,11 @@
 //
 //  SearchScope.swift
-//  AssetsFeature
+//  BitPandaAssets
 //
 
 import BitPandaCore
 import Foundation
+
 // MARK: - SearchScope
 
 public enum SearchScope: Int, CaseIterable {

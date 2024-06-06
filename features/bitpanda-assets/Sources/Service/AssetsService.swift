@@ -1,6 +1,6 @@
 //
 //  AssetsService.swift
-//  AssetsFeature
+//  BitPandaAssets
 //
 
 import BitPandaCore

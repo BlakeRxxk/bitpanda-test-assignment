@@ -4,8 +4,8 @@
 //
 
 import Combine
-import UIKit
 import OSLog
+import UIKit
 
 // MARK: - LeakDetectionStatus
 
@@ -140,7 +140,7 @@ public class LeakDetector {
 
                 if self.disableLeakDetector {
                     if !viewDidDisappear {
-                        
+
                         self.logger.error("Leak detection is disabled. This should only be used for debugging purposes.")
                         self.logger.error("\(message)")
                     }
@@ -156,6 +156,7 @@ public class LeakDetector {
     }
 
     // MARK: Internal
+
     // Test override for leak detectors.
     static var disableLeakDetectorOverride = false
 

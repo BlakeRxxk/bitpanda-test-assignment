@@ -26,15 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let window = window else { return false }
         setupCache()
         setupAppearance()
-
-        let providerFactories = DependencyContainer()
-        appCoordinator = AppCoordinator(in: window, with: providerFactories)
-        appCoordinator?.start()
-
+        let appComponent = AppComponent()
+        launchRouter = appComponent.rootBuilder.build()
+        launchRouter?.launch(from: window)
         return true
     }
 
     // MARK: Private
+
+    private var launchRouter: LaunchRouting?
 
     private func setupAppearance() {
         UITabBar.appearance().barTintColor = Theme.Background.tabBar
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .font: UIFont.Heading.header2,
         ]
 
-//        UISearchBar.appearance().tintColor = UIColor(Color.Accents.accent2)
+        //        UISearchBar.appearance().tintColor = UIColor(Color.Accents.accent2)
 
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance

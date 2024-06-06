@@ -1,6 +1,6 @@
 //
 //  AssetCellModel.swift
-//  AssetsFeature
+//  BitPandaAssets
 //
 
 import BitPandaCore

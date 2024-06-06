@@ -1,6 +1,6 @@
 //
 //  Collection+Ext.swift
-//  AssetsFeature
+//  BitPandaAssets
 //
 
 import BitPandaCore

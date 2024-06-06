@@ -27,7 +27,6 @@ final class AppCoordinator: PresentationCoordinator {
     var rootViewController = UITabBarController()
 
     func start() {
-        let assetsCoordinator = container.makeAssetsCoordinator()
         let walletsCoordinator = container.makeWalletsCoordinator()
 
         walletsCoordinator
@@ -37,21 +36,12 @@ final class AppCoordinator: PresentationCoordinator {
                 image: UIImage.wallet,
                 tag: 0)
 
-        assetsCoordinator
-            .rootViewController
-            .tabBarItem = UITabBarItem(
-                title: Localized.assets,
-                image: UIImage.assets,
-                tag: 1)
-        attachChild(assetsCoordinator)
         attachChild(walletsCoordinator)
 
-        assetsCoordinator.start()
         walletsCoordinator.start()
 
         rootViewController.setViewControllers([
             walletsCoordinator.rootViewController,
-            assetsCoordinator.rootViewController,
         ], animated: false)
     }
 

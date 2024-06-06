@@ -1,6 +1,6 @@
 //
 //  AssetsViewController.swift
-//  AssetsFeature
+//  BitPandaAssets
 //
 
 import BitPandaCore
@@ -11,31 +11,32 @@ import UIKit
 private typealias AssetsDataSource = UICollectionViewDiffableDataSource<AssetView.Section, AssetCellModel>
 private typealias AssetsSnapshot = NSDiffableDataSourceSnapshot<AssetView.Section, AssetCellModel>
 
+// MARK: - AssetsPresentableListener
+
+protocol AssetsPresentableListener: AnyObject {
+    func fetchAggregatedAssets()
+    func search(with text: String)
+    func change(scope index: SearchScope)
+
+    var dataSource: AnyPublisher<[AssetCellModel], Never> { get }
+}
+
 // MARK: - AssetsViewController
 
-public class AssetsViewController: ViewController<AssetView> {
+final class AssetsViewController: ViewController<AssetView>, AssetsPresentable, AssetsViewControllable {
 
     // MARK: Lifecycle
 
-    public init(viewModel: AssetsViewModel) {
-        self.viewModel = viewModel
+    init(listener: AssetsPresentableListener? = nil) {
+        self.listener = listener
         super.init(viewCreator: AssetView.init)
     }
 
     // MARK: Public
 
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-
-        configureDataSource()
-        setupBindings()
-        specializedView.collectionView?.delegate = self
-    }
-
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.fetchAggregatedAssets()
+        listener?.fetchAggregatedAssets()
         setupSearchController(with: [
             Localized.all,
             Localized.cryptocoins,
@@ -46,12 +47,21 @@ public class AssetsViewController: ViewController<AssetView> {
 
     // MARK: Internal
 
-    let viewModel: AssetsViewModel
+    weak var listener: AssetsPresentableListener?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = Localized.title.capitalized
+        configureDataSource()
+        setupBindings()
+        specializedView.collectionView?.delegate = self
+    }
 
     // MARK: Private
 
-    private var dataSource: AssetsDataSource?
     private var cancellables = Set<AnyCancellable>()
+    private var dataSource: AssetsDataSource?
 
     private var assets: [AssetCellModel] = [] {
         didSet {
@@ -85,14 +95,11 @@ public class AssetsViewController: ViewController<AssetView> {
     }
 
     private func setupBindings() {
-        viewModel
-            .$dataSource
-            .sink { self.assets = $0 }
-            .store(in: &cancellables)
-
-        viewModel
-            .$title
-            .sink { self.title = $0.capitalized }
+        listener?
+            .dataSource
+            .sink { [weak self] data in
+                self?.assets = data
+            }
             .store(in: &cancellables)
     }
 
@@ -104,52 +111,16 @@ public class AssetsViewController: ViewController<AssetView> {
     }
 }
 
-// MARK: SearchableList
-
-extension AssetsViewController: SearchableList { }
-
-// MARK: UICollectionViewDelegate
-
-extension AssetsViewController: UICollectionViewDelegate {
-    public func collectionView(_: UICollectionView, didSelectItemAt _: IndexPath) {
-        // placeholder
-    }
-
-    public func collectionView(_: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt _: IndexPath) {
-        guard let cell = cell as? AssetRowCell else { return }
-        cell.loadImage()
-    }
-}
-
-// MARK: UISearchResultsUpdating
-
-extension AssetsViewController: UISearchResultsUpdating {
-    public func updateSearchResults(for _: UISearchController) { }
-}
-
-// MARK: UISearchBarDelegate
-
-extension AssetsViewController: UISearchBarDelegate {
-    public func searchBar(_: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        viewModel.change(scope: .init(rawValue: selectedScope) ?? .all)
-    }
-
-    public func searchBar(_: UISearchBar, textDidChange searchText: String) {
-        viewModel.search(with: searchText)
-    }
-
-    public func searchBarCancelButtonClicked(_: UISearchBar) {
-        viewModel.search(with: "")
-    }
-}
-
-// MARK: AssetsViewController.Localized
-
 extension AssetsViewController {
     fileprivate enum Localized {
+        static let title = "assets".localize()
         static let all = "all".localize()
         static let cryptocoins = "cryptocoins".localize()
         static let commodities = "commodities".localize()
         static let fiats = "fiats".localize()
     }
 }
+
+// MARK: UICollectionViewDelegate
+
+extension AssetsViewController: UICollectionViewDelegate {}

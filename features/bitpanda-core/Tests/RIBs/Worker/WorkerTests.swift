@@ -8,6 +8,7 @@ import XCTest
 @testable import BitPandaCore
 
 // MARK: - WorkerTests
+
 // swiftlint:disable implicitly_unwrapped_optional
 final class WorkerTests: XCTestCase {
 

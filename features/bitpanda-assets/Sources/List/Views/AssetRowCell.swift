@@ -1,6 +1,6 @@
 //
 //  AssetRowCell.swift
-//  AssetsFeature
+//  BitPandaAssets
 //
 
 import BitPandaUI

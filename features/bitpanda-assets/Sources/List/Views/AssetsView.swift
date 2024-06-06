@@ -1,6 +1,6 @@
 //
 //  AssetsView.swift
-//  AssetsFeature
+//  BitPandaAssets
 //
 
 import BitPandaUI

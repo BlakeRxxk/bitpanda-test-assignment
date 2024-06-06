@@ -14,19 +14,6 @@ class DependencyContainer {
     lazy var walletsService: WalletsServiceProtocol = WalletsService()
 }
 
-// MARK: AssetsFactory
-
-extension DependencyContainer: AssetsFactory {
-    func makeAssetsCoordinator() -> AssetsCoordinator {
-        AssetsCoordinator(self)
-    }
-
-    func makeAssetsViewController() -> AssetsViewController {
-        let viewModel = AssetsViewModel(service: assetsService)
-        return AssetsViewController(viewModel: viewModel)
-    }
-}
-
 // MARK: WalletsFactory
 
 extension DependencyContainer: WalletsFactory {

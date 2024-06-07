@@ -1,6 +1,6 @@
 //
 //  WalletsDetailViewController.swift
-//  WalletsFeature
+//  BitPandaWallets
 //
 
 import BitPandaCore
@@ -8,49 +8,54 @@ import BitPandaUI
 import Combine
 import UIKit
 
+protocol WalletsDetailPresentableListener: AnyObject {
+    func fetchWallets()
+    func onDismiss()
+    var dataSource: AnyPublisher<[WalletDetailRowCellModel], Never> { get }
+}
+
 private typealias WalletsDetailDataSource = UICollectionViewDiffableDataSource<
     WalletsDetailView.Section,
     WalletDetailRowCellModel
 >
 private typealias WalletsDetailSnapshot = NSDiffableDataSourceSnapshot<WalletsDetailView.Section, WalletDetailRowCellModel>
 
-// MARK: - WalletsDetailViewController
+final class WalletsDetailViewController: ViewController<WalletsDetailView>, WalletsDetailPresentable, WalletsDetailViewControllable {
 
-public class WalletsDetailViewController: ViewController<WalletsDetailView> {
-
-    // MARK: Lifecycle
-
-    public init(viewModel: WalletsDetailViewModel) {
-        self.viewModel = viewModel
+    weak var listener: WalletsDetailPresentableListener?
+    
+    public init(listener: WalletsDetailPresentableListener? = nil) {
+        self.listener = listener
         super.init(viewCreator: WalletsDetailView.init)
     }
-
+    
     // MARK: Public
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-
+        title = Localized.title
         configureDataSource()
         setupBindings()
         addCloseButtonIfNeeded(target: self, action: #selector(handleClose))
+        
+        navigationController?.presentationController?.delegate = self
     }
 
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.fetchWallets()
+        listener?.fetchWallets()
     }
-
+    
     // MARK: Internal
 
     @objc
     func handleClose() {
-        dismiss(animated: true)
+        listener?.onDismiss()
     }
 
     // MARK: Private
 
     private var dataSource: WalletsDetailDataSource?
-    private var viewModel: WalletsDetailViewModel
     private var cancellables = Set<AnyCancellable>()
 
     private var wallets: [WalletDetailRowCellModel] = [] {
@@ -59,18 +64,15 @@ public class WalletsDetailViewController: ViewController<WalletsDetailView> {
         }
     }
 
+    
     private func setupBindings() {
-        viewModel
-            .$title
-            .sink { self.title = $0 }
-            .store(in: &cancellables)
-
-        viewModel
-            .$dataSource
+        listener?
+            .dataSource
             .sink { self.wallets = $0 }
             .store(in: &cancellables)
     }
-
+    
+    
     private func configureDataSource() {
         guard let collectionView = specializedView.collectionView else { return }
         dataSource = WalletsDetailDataSource(
@@ -102,5 +104,19 @@ public class WalletsDetailViewController: ViewController<WalletsDetailView> {
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
         dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension WalletsDetailViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        listener?.onDismiss()
+    }
+}
+
+// MARK: WalletsDetailViewController.Localized
+
+extension WalletsDetailViewController {
+    fileprivate enum Localized {
+        static let title = "wallets".localize()
     }
 }

@@ -78,7 +78,7 @@ final class WalletsDetailViewModelTests: XCTestCase {
 
     private var cancellables = Set<AnyCancellable>()
 
-    private func makeSUT(with dataPass: WalletsDetailViewDataPass) -> WalletsDetailViewModel {
+    private func makeSUT(with dataPass: SelectedWallet) -> WalletsDetailViewModel {
         let mockService = MockWalletsService()
         let sut = WalletsDetailViewModel(dataPass: dataPass, service: mockService)
         return sut

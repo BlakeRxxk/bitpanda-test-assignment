@@ -4,12 +4,13 @@
 //
 
 import BitPandaAssets
+import BitPandaWallets
 import BitPandaCore
 import UIKit
 
 // MARK: - RootInteractable
 
-protocol RootInteractable: Interactable, AssetsListener {
+protocol RootInteractable: Interactable, AssetsListener, WalletsListener {
     var router: RootRouting? { get set }
     var listener: RootListener? { get set }
 }
@@ -23,39 +24,44 @@ protocol RootViewControllable: ViewControllable {
 // MARK: - RootRouter
 
 final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, RootRouting {
-
+    
     // MARK: Lifecycle
-
+    
     init(
         assetsBuilder: AssetsBuildable,
+        walletsBuilder: WalletsBuildable,
         interactor: RootInteractable,
         viewController: RootViewControllable) {
-        self.assetsBuilder = assetsBuilder
-        super.init(interactor: interactor, viewController: viewController)
-        interactor.router = self
-    }
-
+            self.assetsBuilder = assetsBuilder
+            self.walletsBuilder = walletsBuilder
+            super.init(interactor: interactor, viewController: viewController)
+            interactor.router = self
+        }
+    
     // MARK: Private
-
+    
     private let assetsBuilder: AssetsBuildable
     private var assetsRouting: AssetsRouting?
+    
+    private let walletsBuilder: WalletsBuildable
+    private var walletsRouting: WalletsRouting?
 }
 
 extension RootRouter {
-
+    
     // MARK: Internal
-
+    
     func attachTabs() {
         let tabs: [ViewControllable] = [
             UINavigationController(root: attachAssets()),
             UINavigationController(root: attachWallets())
         ]
-
+        
         viewController.attach(tabs, animated: false)
     }
-
+    
     // MARK: Private
-
+    
     private func attachAssets() -> ViewControllable {
         let router = assetsBuilder.build(withListener: interactor)
         assetsRouting = router
@@ -68,8 +74,8 @@ extension RootRouter {
     }
     
     private func attachWallets() -> ViewControllable {
-        let router = assetsBuilder.build(withListener: interactor)
-        assetsRouting = router
+        let router = walletsBuilder.build(withListener: interactor)
+        walletsRouting = router
         attach(child: router)
         router.viewControllable.uiviewController.tabBarItem = UITabBarItem(
             title: Localized.wallets,

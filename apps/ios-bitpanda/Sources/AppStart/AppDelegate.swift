@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Internal
 
-    var appCoordinator: AppCoordinator?
     var window: UIWindow?
 
     func application(

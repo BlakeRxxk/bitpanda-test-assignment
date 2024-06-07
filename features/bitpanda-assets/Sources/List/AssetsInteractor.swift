@@ -47,6 +47,20 @@ final class AssetsInteractor: PresentableInteractor<AssetsPresentable>, AssetsIn
     private var cache: [AssetCellModel] = []
     private var selectedScope: SearchScope = .all
     private var searchString = ""
+    
+    private func applyFilter() {
+        var data: [AssetCellModel] = cache
+        
+        if selectedScope != .all {
+            data = data.filter { $0.type == selectedScope.cellType }
+        }
+        
+        if !searchString.isEmpty {
+            data = data.filter { applySearch(for: searchString, in: $0.title) }
+        }
+        
+        internalDataStore = data
+    }
 
     private func applySearch(for item: String, in stack: String) -> Bool {
         Fuzzy.search(needle: item, haystack: stack)
@@ -68,38 +82,14 @@ extension AssetsInteractor: AssetsPresentableListener {
         cache = data
         internalDataStore = data
     }
-
-    func change(scope index: SearchScope) {
-        var data: [AssetCellModel] = []
+    
+    public func change(scope index: SearchScope) {
         selectedScope = index
-        switch index {
-        case .all:
-            data = cache
-        default:
-            data = cache.filter { $0.type == selectedScope.cellType }
-        }
-
-        if searchString.count > 0 {
-            data = data
-                .filter { applySearch(for: searchString, in: $0.title) }
-        }
-
-        internalDataStore = data
+        applyFilter()
     }
-
-    func search(with text: String) {
-        var data: [AssetCellModel] = []
+    
+    public func search(with text: String) {
         searchString = text
-        data = cache
-
-        if selectedScope != .all {
-            data = data
-                .filter { $0.type == selectedScope.cellType }
-        }
-
-        data = data
-            .filter { applySearch(for: text, in: $0.title) }
-
-        internalDataStore = data
+        applyFilter()
     }
 }

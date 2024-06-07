@@ -5,18 +5,20 @@
 
 import BitPandaAssets
 import BitPandaCore
+import BitPandaWallets
 
 // MARK: - RootDependency
 
-protocol RootDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
-}
+protocol RootDependency: Dependency { }
 
 // MARK: - RootComponent
 
-final class RootComponent: Component<RootDependency>, AssetsDependency {
+final class RootComponent: Component<RootDependency>, AssetsDependency, WalletsDependency {
     var assetsBuilder: AssetsBuildable {
         AssetsBuilder(dependency: self)
     }
-}
+    
+    var walletsBuilder: WalletsBuildable {
+        WalletsBuilder(dependency: self)
+    }
+ }

@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - WalletGroupCellModel
 
-struct WalletGroupCellModel: Hashable, Equatable {
+public struct WalletGroupCellModel: Hashable, Equatable {
     let itemID: String
     let title: String
     let caption: String

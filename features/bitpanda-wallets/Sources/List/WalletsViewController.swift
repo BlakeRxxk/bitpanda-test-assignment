@@ -1,6 +1,6 @@
 //
 //  WalletsViewController.swift
-//  WalletsFeature
+//  BitPandaWallets
 //
 
 import BitPandaCore
@@ -8,43 +8,40 @@ import BitPandaUI
 import Combine
 import UIKit
 
+public protocol WalletsPresentableListener: AnyObject {
+    func fetchAggregatedWallets()
+    func search(with text: String)
+    func change(scope index: SearchScope)
+    func select(wallet: SelectedWallet)
+
+    var dataSource: AnyPublisher<[WalletGroupCellModel], Never> { get }
+}
+
 private typealias WalletsDataSource = UICollectionViewDiffableDataSource<WalletsView.Section, WalletGroupCellModel>
 private typealias Snapshot = NSDiffableDataSourceSnapshot<WalletsView.Section, WalletGroupCellModel>
 
-// MARK: - WalletsViewControllerOutput
+final class WalletsViewController: ViewController<WalletsView>, WalletsPresentable, WalletsViewControllable {
 
-public protocol WalletsViewControllerOutput: AnyObject {
-    func presentDetailView(_ passData: WalletsDetailViewDataPass)
-}
-
-// MARK: - WalletsViewController
-
-public class WalletsViewController: ViewController<WalletsView> {
-
-    // MARK: Lifecycle
-
-    public init(viewModel: WalletsViewModel) {
-        self.viewModel = viewModel
+    weak var listener: WalletsPresentableListener?
+    
+    init(listener: WalletsPresentableListener? = nil) {
+        self.listener = listener
         super.init(viewCreator: WalletsView.init)
     }
-
-    // MARK: Public
-
-    public weak var output: WalletsViewControllerOutput?
-
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        title = Localized.title.capitalized
         configureDataSource()
         setupBindings()
 
         specializedView.collectionView?.delegate = self
     }
-
+    
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.fetchAggregatedWallets()
+        listener?.fetchAggregatedWallets()
         setupSearchController(with: [
             Localized.all,
             Localized.cryptocoins,
@@ -52,10 +49,9 @@ public class WalletsViewController: ViewController<WalletsView> {
             Localized.fiats,
         ])
     }
-
+    
     // MARK: Private
 
-    private var viewModel: WalletsViewModel
     private var dataSource: WalletsDataSource?
     private var cancellables = Set<AnyCancellable>()
 
@@ -64,15 +60,10 @@ public class WalletsViewController: ViewController<WalletsView> {
             updateSnapshot(with: walletGroups)
         }
     }
-
+    
     private func setupBindings() {
-        viewModel
-            .$title
-            .sink { self.title = $0.capitalized }
-            .store(in: &cancellables)
-
-        viewModel
-            .$dataSource
+        listener?
+            .dataSource
             .sink { self.walletGroups = $0 }
             .store(in: &cancellables)
     }
@@ -110,39 +101,14 @@ public class WalletsViewController: ViewController<WalletsView> {
     }
 }
 
-// MARK: SearchableList
-
-extension WalletsViewController: SearchableList { }
-
 // MARK: UICollectionViewDelegate
 
 extension WalletsViewController: UICollectionViewDelegate {
     public func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = walletGroups[indexPath.item]
-
-        output?.presentDetailView(.init(title: cell.title, selected: cell.itemID, type: cell.type))
-    }
-}
-
-// MARK: UISearchResultsUpdating
-
-extension WalletsViewController: UISearchResultsUpdating {
-    public func updateSearchResults(for _: UISearchController) { }
-}
-
-// MARK: UISearchBarDelegate
-
-extension WalletsViewController: UISearchBarDelegate {
-    public func searchBar(_: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        viewModel.change(scope: .init(rawValue: selectedScope) ?? .all)
-    }
-
-    public func searchBar(_: UISearchBar, textDidChange searchText: String) {
-        viewModel.search(with: searchText)
-    }
-
-    public func searchBarCancelButtonClicked(_: UISearchBar) {
-        viewModel.search(with: "")
+        listener?.select(wallet: .init(title: cell.title,
+                                       selected: cell.itemID,
+                                       type: cell.type))
     }
 }
 
@@ -150,9 +116,16 @@ extension WalletsViewController: UISearchBarDelegate {
 
 extension WalletsViewController {
     fileprivate enum Localized {
+        static let title = "wallets".localize()
         static let all = "all".localize()
         static let cryptocoins = "cryptocoins".localize()
         static let commodities = "commodities".localize()
         static let fiats = "fiats".localize()
+    }
+}
+
+extension WalletsViewController {
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        print("dismiss")
     }
 }

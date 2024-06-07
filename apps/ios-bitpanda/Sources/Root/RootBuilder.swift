@@ -30,6 +30,7 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
         let interactor = RootInteractor(presenter: viewController)
         return RootRouter(
             assetsBuilder: component.assetsBuilder,
+            walletsBuilder: component.walletsBuilder,
             interactor: interactor,
             viewController: viewController)
     }

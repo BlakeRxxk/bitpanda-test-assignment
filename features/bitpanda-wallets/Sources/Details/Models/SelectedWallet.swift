@@ -5,9 +5,9 @@
 
 import Foundation
 
-// MARK: - WalletsDetailViewDataPass
+// MARK: - SelectedWallet
 
-public struct WalletsDetailViewDataPass {
+public struct SelectedWallet {
     public let title: String
     public let selected: String
     public let type: WalletGroupsCell.CellType

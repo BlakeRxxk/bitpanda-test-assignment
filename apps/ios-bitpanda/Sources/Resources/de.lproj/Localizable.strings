@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  BitPanda
+*/
+
+"assets" = "Vermögen";
+"fiatWallet" ="Fiat-Geldbörse";
+"wallet" = "Brieftasche";
+"wallets" = "Brieftaschen";
+"pending" = "Ausstehende Transaktionen:";
+"all" = "Alle";
+"cryptocoin" = "Kryptomünze";
+"cryptocoins" = "Kryptomünzen";
+"commodity" = "Ware";
+"commodities" = "Waren";
+"fiat" = "Fiatgeld";
+"fiats" = "Fiatgeld";

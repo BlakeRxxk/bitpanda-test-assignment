@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  BitPanda
+*/
+
+"assets" = "Assets";
+"fiatWallet" = "Fiat Wallet";
+"wallet" = "Wallet";
+"wallets" = "Wallets";
+"pending" = "Pending transactions:";
+"all" = "All";
+"cryptocoin" = "Cryptocoin";
+"cryptocoins" = "Cryptocoins";
+"commodity" = "Commodity";
+"commodities" = "Commodities";
+"fiat" = "Fiat";
+"fiats" = "Fiats";
+
+
+

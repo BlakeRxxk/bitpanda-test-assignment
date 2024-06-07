@@ -7,11 +7,14 @@ import Foundation
 
 import BitPandaCore
 
+// MARK: - WalletsDetailDependency
+
 protocol WalletsDetailDependency: Dependency {
     var walletsService: WalletsServiceProtocol { get }
-    var selectedWalletPublisher: MutableSelectedWalletPublisher { get }
 }
 
+// MARK: - WalletsDetailComponent
+
 final class WalletsDetailComponent: Component<WalletsDetailDependency> {
-    
+
 }

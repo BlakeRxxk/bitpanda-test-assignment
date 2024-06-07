@@ -8,6 +8,8 @@ import BitPandaUI
 import Combine
 import UIKit
 
+// MARK: - WalletsDetailPresentableListener
+
 protocol WalletsDetailPresentableListener: AnyObject {
     func fetchWallets()
     func onDismiss()
@@ -20,15 +22,18 @@ private typealias WalletsDetailDataSource = UICollectionViewDiffableDataSource<
 >
 private typealias WalletsDetailSnapshot = NSDiffableDataSourceSnapshot<WalletsDetailView.Section, WalletDetailRowCellModel>
 
-final class WalletsDetailViewController: ViewController<WalletsDetailView>, WalletsDetailPresentable, WalletsDetailViewControllable {
+// MARK: - WalletsDetailViewController
 
-    weak var listener: WalletsDetailPresentableListener?
-    
+final class WalletsDetailViewController: ViewController<WalletsDetailView>, WalletsDetailPresentable,
+    WalletsDetailViewControllable {
+
+    // MARK: Lifecycle
+
     public init(listener: WalletsDetailPresentableListener? = nil) {
         self.listener = listener
         super.init(viewCreator: WalletsDetailView.init)
     }
-    
+
     // MARK: Public
 
     override public func viewDidLoad() {
@@ -37,7 +42,7 @@ final class WalletsDetailViewController: ViewController<WalletsDetailView>, Wall
         configureDataSource()
         setupBindings()
         addCloseButtonIfNeeded(target: self, action: #selector(handleClose))
-        
+
         navigationController?.presentationController?.delegate = self
     }
 
@@ -45,8 +50,10 @@ final class WalletsDetailViewController: ViewController<WalletsDetailView>, Wall
         super.viewWillAppear(animated)
         listener?.fetchWallets()
     }
-    
+
     // MARK: Internal
+
+    weak var listener: WalletsDetailPresentableListener?
 
     @objc
     func handleClose() {
@@ -64,15 +71,13 @@ final class WalletsDetailViewController: ViewController<WalletsDetailView>, Wall
         }
     }
 
-    
     private func setupBindings() {
         listener?
             .dataSource
             .sink { self.wallets = $0 }
             .store(in: &cancellables)
     }
-    
-    
+
     private func configureDataSource() {
         guard let collectionView = specializedView.collectionView else { return }
         dataSource = WalletsDetailDataSource(
@@ -107,8 +112,10 @@ final class WalletsDetailViewController: ViewController<WalletsDetailView>, Wall
     }
 }
 
+// MARK: UIAdaptivePresentationControllerDelegate
+
 extension WalletsDetailViewController: UIAdaptivePresentationControllerDelegate {
-    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+    func presentationControllerWillDismiss(_: UIPresentationController) {
         listener?.onDismiss()
     }
 }

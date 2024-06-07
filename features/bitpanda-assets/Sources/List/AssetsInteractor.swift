@@ -47,18 +47,18 @@ final class AssetsInteractor: PresentableInteractor<AssetsPresentable>, AssetsIn
     private var cache: [AssetCellModel] = []
     private var selectedScope: SearchScope = .all
     private var searchString = ""
-    
+
     private func applyFilter() {
         var data: [AssetCellModel] = cache
-        
+
         if selectedScope != .all {
             data = data.filter { $0.type == selectedScope.cellType }
         }
-        
+
         if !searchString.isEmpty {
             data = data.filter { applySearch(for: searchString, in: $0.title) }
         }
-        
+
         internalDataStore = data
     }
 
@@ -70,6 +70,21 @@ final class AssetsInteractor: PresentableInteractor<AssetsPresentable>, AssetsIn
 // MARK: AssetsPresentableListener
 
 extension AssetsInteractor: AssetsPresentableListener {
+
+    // MARK: Public
+
+    public func change(scope index: SearchScope) {
+        selectedScope = index
+        applyFilter()
+    }
+
+    public func search(with text: String) {
+        searchString = text
+        applyFilter()
+    }
+
+    // MARK: Internal
+
     var dataSource: AnyPublisher<[AssetCellModel], Never> {
         $internalDataStore.eraseToAnyPublisher()
     }
@@ -81,15 +96,5 @@ extension AssetsInteractor: AssetsPresentableListener {
         data.append(contentsOf: assetsService.fetchFiats().mapToCellModel())
         cache = data
         internalDataStore = data
-    }
-    
-    public func change(scope index: SearchScope) {
-        selectedScope = index
-        applyFilter()
-    }
-    
-    public func search(with text: String) {
-        searchString = text
-        applyFilter()
     }
 }

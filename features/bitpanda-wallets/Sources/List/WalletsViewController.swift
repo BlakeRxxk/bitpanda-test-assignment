@@ -8,6 +8,8 @@ import BitPandaUI
 import Combine
 import UIKit
 
+// MARK: - WalletsPresentableListener
+
 public protocol WalletsPresentableListener: AnyObject {
     func fetchAggregatedWallets()
     func search(with text: String)
@@ -20,15 +22,19 @@ public protocol WalletsPresentableListener: AnyObject {
 private typealias WalletsDataSource = UICollectionViewDiffableDataSource<WalletsView.Section, WalletGroupCellModel>
 private typealias Snapshot = NSDiffableDataSourceSnapshot<WalletsView.Section, WalletGroupCellModel>
 
+// MARK: - WalletsViewController
+
 final class WalletsViewController: ViewController<WalletsView>, WalletsPresentable, WalletsViewControllable {
 
-    weak var listener: WalletsPresentableListener?
-    
+    // MARK: Lifecycle
+
     init(listener: WalletsPresentableListener? = nil) {
         self.listener = listener
         super.init(viewCreator: WalletsView.init)
     }
-    
+
+    // MARK: Public
+
     override public func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -38,7 +44,7 @@ final class WalletsViewController: ViewController<WalletsView>, WalletsPresentab
 
         specializedView.collectionView?.delegate = self
     }
-    
+
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         listener?.fetchAggregatedWallets()
@@ -49,7 +55,11 @@ final class WalletsViewController: ViewController<WalletsView>, WalletsPresentab
             Localized.fiats,
         ])
     }
-    
+
+    // MARK: Internal
+
+    weak var listener: WalletsPresentableListener?
+
     // MARK: Private
 
     private var dataSource: WalletsDataSource?
@@ -60,7 +70,7 @@ final class WalletsViewController: ViewController<WalletsView>, WalletsPresentab
             updateSnapshot(with: walletGroups)
         }
     }
-    
+
     private func setupBindings() {
         listener?
             .dataSource
@@ -106,9 +116,10 @@ final class WalletsViewController: ViewController<WalletsView>, WalletsPresentab
 extension WalletsViewController: UICollectionViewDelegate {
     public func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = walletGroups[indexPath.item]
-        listener?.select(wallet: .init(title: cell.title,
-                                       selected: cell.itemID,
-                                       type: cell.type))
+        listener?.select(wallet: .init(
+            title: cell.title,
+            selected: cell.itemID,
+            type: cell.type))
     }
 }
 
@@ -121,11 +132,5 @@ extension WalletsViewController {
         static let cryptocoins = "cryptocoins".localize()
         static let commodities = "commodities".localize()
         static let fiats = "fiats".localize()
-    }
-}
-
-extension WalletsViewController {
-    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
-        print("dismiss")
     }
 }

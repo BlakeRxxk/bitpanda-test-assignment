@@ -5,7 +5,11 @@
 
 import BitPandaCore
 
+// MARK: - WalletsDependency
+
 public protocol WalletsDependency: Dependency { }
+
+// MARK: - WalletsComponent
 
 public final class WalletsComponent: Component<WalletsDependency>, WalletsDetailDependency {
     var walletsService: WalletsServiceProtocol {
@@ -13,14 +17,8 @@ public final class WalletsComponent: Component<WalletsDependency>, WalletsDetail
             WalletsService()
         }
     }
-    
+
     var walletsDetail: WalletsDetailBuildable {
         WalletsDetailBuilder(dependency: self)
-    }
-    
-    var selectedWalletPublisher: MutableSelectedWalletPublisher {
-        shared {
-            SelectedWalletPublisherImplementation()
-        }
     }
 }

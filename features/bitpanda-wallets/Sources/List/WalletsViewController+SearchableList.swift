@@ -6,17 +6,17 @@
 import BitPandaUI
 import UIKit
 
-// MARK: SearchableList
+// MARK: - WalletsViewController + SearchableList
 
 extension WalletsViewController: SearchableList { }
 
-// MARK: UISearchResultsUpdating
+// MARK: - WalletsViewController + UISearchResultsUpdating
 
 extension WalletsViewController: UISearchResultsUpdating {
     public func updateSearchResults(for _: UISearchController) { }
 }
 
-// MARK: UISearchBarDelegate
+// MARK: - WalletsViewController + UISearchBarDelegate
 
 extension WalletsViewController: UISearchBarDelegate {
     public func searchBar(_: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {

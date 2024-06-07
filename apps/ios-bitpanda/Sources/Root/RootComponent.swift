@@ -17,8 +17,8 @@ final class RootComponent: Component<RootDependency>, AssetsDependency, WalletsD
     var assetsBuilder: AssetsBuildable {
         AssetsBuilder(dependency: self)
     }
-    
+
     var walletsBuilder: WalletsBuildable {
         WalletsBuilder(dependency: self)
     }
- }
+}

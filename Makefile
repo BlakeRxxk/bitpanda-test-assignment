@@ -13,19 +13,19 @@ fix:
 format:
 	${swiftformat} --config "bitpanda-test.swiftformat" .
 
-ribs_mock:
-	${mockolo} -s ./features/bitpanda-core/Sources/RIBs -d ./apps/ios-bitpanda/Tests/RIBsMocks.swift --mock-all --custom-imports BitPandaCore
-
-assets_mock:
+assets_mocks:
 	${mockolo} -s ./features/bitpanda-assets/Sources/  \
 	 --mockfiles ./features/bitpanda-core/Sources/RIBMocks/*.swift \
-	 -d ./features/bitpanda-assets/Tests/Generated/AssetsMocks.swift --custom-imports BitPandaCore --custom-imports BitPandaAssets
+	 -d ./features/bitpanda-assets/Tests/Generated/AssetsMocks.swift \
+	 --custom-imports BitPandaCore \
+	 --custom-imports BitPandaAssets
 
-mock:
-	${mockolo} -s ./apps/ios-bitpanda/Sources \
-	 -d ./apps/ios-bitpanda/Tests/OutputMocks.swift \
-	 --mock-final \
-
+wallets_mocks:
+	${mockolo} -s ./features/bitpanda-wallets/Sources/  \
+	 --mockfiles ./features/bitpanda-core/Sources/RIBMocks/*.swift \
+	 -d ./features/bitpanda-wallets/Tests/Generated/WalletsMocks.swift \
+	 --custom-imports BitPandaCore \
+	 --custom-imports BitPandaWallets
 
 kill_xcode:
 	killall Xcode || true

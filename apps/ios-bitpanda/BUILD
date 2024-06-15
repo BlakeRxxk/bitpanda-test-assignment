@@ -19,6 +19,18 @@ swift_library(
     ]
 )
 
+swift_library(
+    name = "AppLibrary-test",
+    testonly = True,
+    srcs = glob(["Tests/**/*.swift"]),
+    tags = ["manual"],
+    deps = [
+        ":AppLibrary",
+    ],
+    visibility = ["//visibility:public"],
+    module_name = "AppLibraryTests",
+)
+
 apple_resource_group(
     name = "Assets",
     resources = glob(["Sources/Resources/Assets.xcassets/**"]),
@@ -50,6 +62,12 @@ genrule(
 ios_application(
     name = "iOSApp",
     bundle_id = "build.bazel.rules-apple-example",
+    frameworks = [
+        "//features/bitpanda-core:bitpanda-core-sdk",
+        "//features/bitpanda-wallets:bitpanda-wallets-sdk",
+        "//features/bitpanda-assets:bitpanda-assets-sdk",
+        "//features/bitpanda-ui:bitpanda-ui-sdk"
+    ],
     families = [
         "iphone",
         "ipad",
@@ -71,8 +89,11 @@ ios_unit_test(
     test_host = ":iOSApp",
     test_coverage_manifest = "CoverageManifest.instrumented_files",
     deps = [
+        ":AppLibrary-test",
         "//features/bitpanda-core:bitpanda-core-test",
-        "//features/bitpanda-wallets:bitpanda-wallets-test"
+        "//features/bitpanda-wallets:bitpanda-wallets-test",
+        "//features/bitpanda-assets:bitpanda-assets-test"
+        
     ],
 )
 

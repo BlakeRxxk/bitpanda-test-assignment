@@ -61,7 +61,9 @@ class WalletDetailRowCell: UICollectionViewCell {
 
         amount.font = UIFont.Body.Size16.medium
         amount.textColor = Theme.Text.primary
-        image.icon = UIImage.wallet
+        image.configure(with: .init(
+            image: UIImage.wallet,
+            imageTintColor: Theme.Background.constantWhite))
     }
 
     private func layout() {
@@ -87,8 +89,7 @@ class WalletDetailRowCell: UICollectionViewCell {
 
     private func updateCell(with model: WalletDetailRowCellModel?) {
         guard let model = model else { return }
-        headline.title = model.title
-        headline.caption = model.caption
+        headline.configure(with: .init(title: model.title, caption: model.caption))
         amount.text = model.amount
         if model.isDefault {
             contentView.layer.addBorder(

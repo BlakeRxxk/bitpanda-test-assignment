@@ -52,7 +52,7 @@ apple_resource_group(
 
 genrule(
     name = "CreateTestCoverageManifest",
-    srcs = ["Sources/AppStart/BitPandaApp.swift"],
+    srcs = ["Sources/AppStart/AppDelegate.swift"],
     outs = [
         "CoverageManifest.instrumented_files",
     ],

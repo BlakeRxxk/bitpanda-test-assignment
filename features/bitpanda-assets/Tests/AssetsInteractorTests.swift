@@ -8,6 +8,7 @@ import Combine
 import XCTest
 @testable import BitPandaAssets
 
+// swiftlint:disable implicitly_unwrapped_optional
 final class AssetsInteractorTests: XCTestCase {
 
     // MARK: Internal

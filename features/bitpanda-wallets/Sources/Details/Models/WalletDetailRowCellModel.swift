@@ -34,7 +34,7 @@ public struct WalletDetailRowCellModel: Hashable, Equatable {
         isDefault = false
     }
 
-    // MARK: Internal
+    // MARK: Public
 
     public let title: String
     public let caption: String

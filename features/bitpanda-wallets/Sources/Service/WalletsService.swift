@@ -6,6 +6,7 @@
 import BitPandaCore
 
 // MARK: - WalletsServiceProtocol
+
 /// @mockable
 public protocol WalletsServiceProtocol {
     func fetchWallets() -> [Wallet]

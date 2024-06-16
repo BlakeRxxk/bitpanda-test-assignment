@@ -7,6 +7,8 @@ import BitPandaCore
 import Foundation
 @testable import BitPandaWallets
 
+// MARK: - WalletsFactory
+
 class WalletsFactory: WalletsServiceProtocol {
     public func fetchWallets() -> [Wallet] {
         guard let data = FileReader.readJSON(from: "WalletsMock", bundle: .framework) else { return [] }
@@ -41,7 +43,6 @@ class WalletsFactory: WalletsServiceProtocol {
     }
 
 }
-
 
 extension Bundle {
 

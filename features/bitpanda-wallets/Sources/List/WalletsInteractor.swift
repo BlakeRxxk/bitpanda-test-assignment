@@ -8,6 +8,7 @@ import Combine
 
 // MARK: - WalletsRouting
 
+/// @mockable
 public protocol WalletsRouting: ViewableRouting {
     func attachDetailView(with model: SelectedWallet)
     func detachWalletDetail()
@@ -15,12 +16,14 @@ public protocol WalletsRouting: ViewableRouting {
 
 // MARK: - WalletsPresentable
 
+/// @mockable
 public protocol WalletsPresentable: Presentable {
     var listener: WalletsPresentableListener? { get set }
 }
 
 // MARK: - WalletsListener
 
+/// @mockable
 public protocol WalletsListener: AnyObject { }
 
 // MARK: - WalletsInteractor

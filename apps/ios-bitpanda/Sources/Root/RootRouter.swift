@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - RootInteractable
 
+/// @mockable
 protocol RootInteractable: Interactable, AssetsListener, WalletsListener {
     var router: RootRouting? { get set }
     var listener: RootListener? { get set }
@@ -17,6 +18,7 @@ protocol RootInteractable: Interactable, AssetsListener, WalletsListener {
 
 // MARK: - RootViewControllable
 
+/// @mockable
 protocol RootViewControllable: ViewControllable {
     func attach(_ viewControllers: [ViewControllable], animated: Bool)
 }

@@ -7,6 +7,7 @@ import BitPandaCore
 
 // MARK: - WalletsBuildable
 
+/// @mockable
 public protocol WalletsBuildable: Buildable {
     func build(withListener listener: WalletsListener) -> WalletsRouting
 }

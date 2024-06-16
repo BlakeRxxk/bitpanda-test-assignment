@@ -7,6 +7,7 @@ import BitPandaCore
 
 // MARK: - RootRouting
 
+/// @mockable
 protocol RootRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
     func attachTabs()
@@ -14,12 +15,14 @@ protocol RootRouting: ViewableRouting {
 
 // MARK: - RootPresentable
 
+/// @mockable
 protocol RootPresentable: Presentable {
     var listener: RootPresentableListener? { get set }
 }
 
 // MARK: - RootListener
 
+/// @mockable
 protocol RootListener: AnyObject { }
 
 // MARK: - RootInteractor

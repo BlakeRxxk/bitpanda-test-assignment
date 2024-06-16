@@ -8,16 +8,19 @@ import Combine
 
 // MARK: - AssetsRouting
 
+/// @mockable
 public protocol AssetsRouting: ViewableRouting {}
 
 // MARK: - AssetsPresentable
 
-protocol AssetsPresentable: Presentable {
+/// @mockable
+public protocol AssetsPresentable: Presentable {
     var listener: AssetsPresentableListener? { get set }
 }
 
 // MARK: - AssetsListener
 
+/// @mockable
 public protocol AssetsListener: AnyObject {}
 
 // MARK: - AssetsInteractor

@@ -7,6 +7,7 @@ import BitPandaCore
 
 // MARK: - AssetsBuildable
 
+/// @mockable
 public protocol AssetsBuildable: Buildable {
     func build(withListener listener: AssetsListener) -> AssetsRouting
 }

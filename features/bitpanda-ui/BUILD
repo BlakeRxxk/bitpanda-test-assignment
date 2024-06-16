@@ -1,4 +1,5 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_framework")
 
 swift_library(
     name = "bitpanda-ui",
@@ -18,4 +19,18 @@ swift_library(
     ],
     visibility = ["//visibility:public"],
     module_name = "BitPandaUITests",
+)
+
+ios_framework(
+    name = "bitpanda-ui-sdk",
+    bundle_id = "com.rxxk.bitpanda.ui",
+    bundle_name = "BitpandaUISDK",
+    families = [
+        "iphone",
+        "ipad",
+    ],
+    infoplists = ["Info.plist"],
+    minimum_os_version = "15.0",
+    visibility = ["//visibility:public"],
+    deps = [":bitpanda-ui"],
 )

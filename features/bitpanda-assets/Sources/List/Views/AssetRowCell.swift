@@ -100,8 +100,7 @@ final class AssetRowCell: UICollectionViewCell {
     private func updateCell(with model: AssetCellModel?) {
         guard let model = model else { return }
 
-        headline.title = model.title
-        headline.caption = model.caption
+        headline.configure(with: .init(title: model.title, caption: model.caption))
         darkLogo = model.darkLogo
         lightLogo = model.lightLogo
         amount.text = model.amount

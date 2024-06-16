@@ -8,6 +8,7 @@ import Foundation
 
 // MARK: - AssetsServiceProtocol
 
+/// @mockable
 public protocol AssetsServiceProtocol {
     func fetchCryptocoins() -> [Commodity]
     func fetchCommodities() -> [Commodity]

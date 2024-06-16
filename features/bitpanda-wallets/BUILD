@@ -1,4 +1,5 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@build_bazel_rules_apple//apple:resources.bzl", "apple_resource_group")
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_framework")
 
 swift_library(
@@ -21,8 +22,18 @@ swift_library(
     deps = [
         ":bitpanda-wallets",
     ],
+    data = [
+        ":MockData",
+    ],
     visibility = ["//visibility:public"],
     module_name = "BitPandaWalletsTests",
+)
+
+apple_resource_group(
+    name = "MockData",
+    resources = [
+        "Tests/Mocks/WalletsMock.json",
+    ],
 )
 
 ios_framework(

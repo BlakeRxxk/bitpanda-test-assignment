@@ -7,18 +7,18 @@ import BitPandaCore
 import Combine
 
 // MARK: - WalletsDetailRouting
-
-protocol WalletsDetailRouting: ViewableRouting { }
+/// @mockable
+public protocol WalletsDetailRouting: ViewableRouting { }
 
 // MARK: - WalletsDetailPresentable
-
-protocol WalletsDetailPresentable: Presentable {
+/// @mockable
+public protocol WalletsDetailPresentable: Presentable {
     var listener: WalletsDetailPresentableListener? { get set }
 }
 
 // MARK: - WalletsDetailListener
-
-protocol WalletsDetailListener: AnyObject {
+/// @mockable
+public protocol WalletsDetailListener: AnyObject {
     func onDismiss()
 }
 

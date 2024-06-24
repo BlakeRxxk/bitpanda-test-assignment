@@ -21,9 +21,4 @@ final class RootViewController: UITabBarController, RootPresentable, RootViewCon
             viewControllers.map { $0.uiviewController },
             animated: false)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .cyan
-    }
 }

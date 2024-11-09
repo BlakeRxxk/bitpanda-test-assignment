@@ -5,6 +5,8 @@
 
 import Foundation
 import XCTest
+import Combine
+
 @testable import BitPandaWallets
 
 final class WalletsDetailInteractorTests: XCTestCase {
@@ -29,7 +31,11 @@ final class WalletsDetailInteractorTests: XCTestCase {
         router = WalletsDetailRoutingMock()
         listener = WalletsDetailListenerMock()
 
-        interactor = WalletsDetailInteractor(walletsService: mockService, presenter: presenter)
+        interactor = WalletsDetailInteractor(
+            selectedWallet: SelectedWallet(title: "demo wallet", selected: "selected", type: .commodity),
+            walletsService: mockService,
+            presenter: presenter
+        )
         interactor.router = router
         interactor.listener = listener
     }

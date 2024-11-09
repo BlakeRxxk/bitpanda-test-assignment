@@ -89,16 +89,10 @@ public final class WalletGroupsCell: UICollectionViewCell {
 
     private func updateCell(with model: WalletGroupCellModel?) {
         guard let model = model else { return }
-        headline.title = model.title
-        headline.caption = model.caption
-        switch model.type {
-        case .commodity:
-            image.icon = UIImage.wallet
-        case .cryptocoin:
-            image.icon = UIImage.crypto
-        case .fiat:
-            image.icon = UIImage.fiat
-        }
+        headline.configure(with: .init(title: model.title, caption: model.caption))
+        image.configure(with: .init(
+            image: model.type.icon,
+            imageTintColor: Theme.Background.constantWhite))
     }
 }
 
@@ -113,5 +107,16 @@ extension WalletGroupsCell {
         case commodity
         case cryptocoin
         case fiat
+
+        var icon: UIImage {
+            switch self {
+            case .commodity:
+                return UIImage.wallet
+            case .cryptocoin:
+                return UIImage.crypto
+            case .fiat:
+                return UIImage.fiat
+            }
+        }
     }
 }

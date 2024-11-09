@@ -13,7 +13,7 @@ private typealias AssetsSnapshot = NSDiffableDataSourceSnapshot<AssetView.Sectio
 
 // MARK: - AssetsPresentableListener
 
-protocol AssetsPresentableListener: AnyObject {
+public protocol AssetsPresentableListener: AnyObject {
     func fetchAggregatedAssets()
     func search(with text: String)
     func change(scope index: SearchScope)

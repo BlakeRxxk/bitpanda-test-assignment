@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - WalletsDetailPresentableListener
 
-protocol WalletsDetailPresentableListener: AnyObject {
+public protocol WalletsDetailPresentableListener: AnyObject {
     func fetchWallets()
     func onDismiss()
     var dataSource: AnyPublisher<[WalletDetailRowCellModel], Never> { get }

@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
         guard let window = window else { return false }
-        setupCache()
         setupAppearance()
         let appComponent = AppComponent()
         launchRouter = appComponent.rootBuilder.build()
@@ -52,19 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .font: UIFont.Heading.header2,
         ]
 
-        //        UISearchBar.appearance().tintColor = UIColor(Color.Accents.accent2)
-
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
     }
-
-    private func setupCache() {
-        //        PINCache.shared.diskCache.byteLimit = Constants.diskLimit
-        //        PINCache.shared.diskCache.ageLimit = Constants.ageLimit
-        //        PINCache.shared.memoryCache.ageLimit = Constants.ageLimit
-    }
-
 }
 
 extension AppDelegate {

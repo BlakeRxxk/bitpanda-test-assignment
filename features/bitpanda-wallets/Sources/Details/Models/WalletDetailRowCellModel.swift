@@ -8,11 +8,11 @@ import Foundation
 
 // MARK: - WalletDetailRowCellModel
 
-struct WalletDetailRowCellModel: Hashable, Equatable {
+public struct WalletDetailRowCellModel: Hashable, Equatable {
 
     // MARK: Lifecycle
 
-    init(from model: Wallet, precision: Int) {
+    public init(from model: Wallet, precision: Int) {
         title = model.attributes.name
         caption = "\(Localized.caption) \(model.attributes.pendingTransactionsCount)"
         amount = NumberFactory
@@ -23,7 +23,7 @@ struct WalletDetailRowCellModel: Hashable, Equatable {
         isDefault = model.attributes.isDefault
     }
 
-    init(from model: FiatWallet, precision: Int) {
+    public init(from model: FiatWallet, precision: Int) {
         title = model.attributes.name
         caption = "\(Localized.caption) \(model.attributes.pendingTransactionsCount)"
         amount = NumberFactory
@@ -34,12 +34,12 @@ struct WalletDetailRowCellModel: Hashable, Equatable {
         isDefault = false
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let title: String
-    let caption: String
-    let amount: String
-    let isDefault: Bool
+    public let title: String
+    public let caption: String
+    public let amount: String
+    public let isDefault: Bool
 }
 
 // MARK: WalletDetailRowCellModel.Localized

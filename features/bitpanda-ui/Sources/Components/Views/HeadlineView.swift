@@ -15,7 +15,7 @@ public protocol HeadlineViewInput {
 
 // MARK: - HeadlineView
 
-public final class HeadlineView: View {
+public final class HeadlineView: View, ConfigurableView {
 
     // MARK: Lifecycle
 
@@ -29,22 +29,23 @@ public final class HeadlineView: View {
 
     // MARK: Public
 
-    public var title: String? {
-        get {
-            titleLabel.text
-        }
-        set {
-            titleLabel.text = newValue
-        }
+    public override var intrinsicContentSize: CGSize {
+        sizeThatFits(CGSize(width: CGFloat.infinity, height: 0))
     }
 
-    public var caption: String? {
-        get {
-            captionLabel.text
-        }
-        set {
-            captionLabel.text = newValue
-        }
+    public func configure(with configuration: Configuration) {
+        titleLabel.text = configuration.title
+        captionLabel.text = configuration.caption
+        setNeedsLayout()
+        invalidateIntrinsicContentSize()
+    }
+
+    public override func sizeThatFits(_: CGSize) -> CGSize {
+        CGSize(width: Spacing.x40, height: Spacing.x40)
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
     }
 
     // MARK: Internal
@@ -90,6 +91,14 @@ public final class HeadlineView: View {
     }
 }
 
-// MARK: HeadlineViewInput
+extension HeadlineView {
+    public struct Configuration: Hashable {
+        public let title: String
+        public let caption: String?
 
-extension HeadlineView: HeadlineViewInput {}
+        public init(title: String, caption: String?) {
+            self.title = title
+            self.caption = caption
+        }
+    }
+}

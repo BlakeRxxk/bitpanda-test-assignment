@@ -8,7 +8,6 @@ import BitPandaCore
 // MARK: - AppComponent
 
 class AppComponent: Component<EmptyDependency>, RootDependency {
-
     // MARK: Lifecycle
 
     init() {

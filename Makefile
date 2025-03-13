@@ -30,3 +30,9 @@ wallets_mocks:
 kill_xcode:
 	killall Xcode || true
 	killall Simulator || true
+
+build:
+	bazel build //apps/ios-bitpanda:iOSApp
+
+run:
+	bazel run //apps/ios-bitpanda:iOSApp 
